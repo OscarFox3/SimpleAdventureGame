@@ -1,6 +1,6 @@
 # CertificationExamPrep
 
-This program is focused on preparing for the CPA – C++ Certified Associate Programmer exam. </ br>
+This program is focused on preparing for the CPA – C++ Certified Associate Programmer exam.
 
 ## Demonstrate
 
