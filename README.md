@@ -9,3 +9,8 @@ It is my intention to demonstrate the OOP skills that are involved in a successf
 ## Design
 
 The design of the project will be constructed with Unreal Engine.
+
+## Resources
+
+Tutorial series for learning C++ for Unreal Engine:
+https://github.com/DruidMech/LearnCPPForUnrealEngineUnit2
