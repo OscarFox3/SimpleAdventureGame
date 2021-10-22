@@ -12,5 +12,5 @@ The design of the project will be constructed with Unreal Engine.
 
 ## Resources
 
-Tutorial series for learning C++ for Unreal Engine:
+Tutorial series for learning C++ with Unreal Engine:
 https://github.com/DruidMech/LearnCPPForUnrealEngineUnit2
