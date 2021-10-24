@@ -10,5 +10,6 @@ UMyObject::UMyObject()  // definition for constructor
 
 void UMyObject::MyFunction()
 {
-	UE_LOG(LogTemp, Warning, TEXT("This is our warning text!")); // Prints text to output log
+	// Prints warning text to output log temporary
+	UE_LOG(LogTemp, Warning, TEXT("This is our warning text!"));
 }
