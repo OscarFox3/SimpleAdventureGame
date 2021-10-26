@@ -3,17 +3,17 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
-#include "MainCharacter.generated.h"
+#include "GameFramework/Pawn.h"
+#include "Collider.generated.h"
 
 UCLASS()
-class INTPROJECT_API AMainCharacter : public ACharacter  // Class derived from Actor
+class INTPROJECT_API ACollider : public APawn
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
-	AMainCharacter();
+	// Sets default values for this pawn's properties
+	ACollider();
 
 protected:
 	// Called when the game starts or when spawned
