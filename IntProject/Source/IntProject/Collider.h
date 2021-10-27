@@ -39,6 +39,12 @@ public:
 	// control camera motion
 	class USpringArmComponent* SpringArm;
 
+	UPROPERTY(VisibleAnywhere, Category = "Movement")
+	class UColliderMovementComponent* OurMovementComponent;
+
+	// override
+	virtual UPawnMovementComponent* GetMovementComponent() const override;
+
 	// inline functions
 	FORCEINLINE UStaticMeshComponent* GetMeshComponent() { return MeshComponent; }
 	FORCEINLINE void SetMeshComponent(UStaticMeshComponent* Mesh) { MeshComponent = Mesh; }

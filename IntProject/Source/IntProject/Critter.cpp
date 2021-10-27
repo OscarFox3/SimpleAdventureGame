@@ -2,7 +2,7 @@
 
 
 #include "Critter.h"
-#include "Components/StaticMeshComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
 
@@ -14,7 +14,7 @@ ACritter::ACritter()
 
 	// Inheritance RootComponent from Actor
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
-	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
+	MeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("MeshComponent"));
 	MeshComponent->SetupAttachment(GetRootComponent());
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));

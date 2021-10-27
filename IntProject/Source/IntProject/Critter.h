@@ -27,7 +27,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, Category = "Mesh")
-	class UStaticMeshComponent* MeshComponent;
+	class USkeletalMeshComponent* MeshComponent;
 
 	UPROPERTY(EditAnywhere)
 	class UCameraComponent* Camera;
