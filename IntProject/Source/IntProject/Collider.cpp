@@ -75,7 +75,7 @@ void ACollider::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	PlayerInputComponent->BindAxis(TEXT("MoveFoward"), this, &ACollider::MoveFoward);
-	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &ACollider::MoveFoward);
+	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &ACollider::MoveRight);
 
 }
 
