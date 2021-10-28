@@ -51,6 +51,8 @@ ACollider::ACollider()
 	OurMovementComponent = CreateDefaultSubobject<UColliderMovementComponent>(TEXT("OurMovementComponent"));
 	OurMovementComponent->UpdatedComponent = RootComponent;
 
+	CameraInput = FVector2D(0.f, 0.f);
+
 	// AutoPossessPlayer = EAutoReceiveInput::Player0;
 
 }
@@ -67,6 +69,16 @@ void ACollider::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	FRotator NewRotation = GetActorRotation();
+	NewRotation.Yaw += CameraInput.X;
+	SetActorRotation(NewRotation);
+
+	FRotator NewSpringArmRotation = SpringArm->GetComponentRotation();
+	// Ensure NewSpringArmRotation pitch will be angled 
+	NewSpringArmRotation.Pitch = FMath::Clamp(NewSpringArmRotation.Pitch += CameraInput.Y, -80.f, -15.f);
+
+	SpringArm->SetWorldRotation(NewSpringArmRotation);
+
 }
 
 // Called to bind functionality to input
@@ -74,12 +86,15 @@ void ACollider::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAxis(TEXT("MoveFoward"), this, &ACollider::MoveFoward);
+	PlayerInputComponent->BindAxis(TEXT("MoveFoward"), this, &ACollider::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &ACollider::MoveRight);
+
+	PlayerInputComponent->BindAxis(TEXT("CameraPitch"), this, &ACollider::PitchCamera);
+	PlayerInputComponent->BindAxis(TEXT("CameraYaw"), this, &ACollider::YawCamera);
 
 }
 
-void ACollider::MoveFoward(float input)
+void ACollider::MoveForward(float input)
 {
 	FVector Forward = GetActorForwardVector();
 
@@ -97,6 +112,17 @@ void ACollider::MoveRight(float input)
 		OurMovementComponent->AddInputVector(Right * input);
 	}
 }
+
+void ACollider::YawCamera(float AxisValue)
+{
+	CameraInput.X = AxisValue;
+}
+
+void ACollider::PitchCamera(float AxisValue)
+{
+	CameraInput.Y = AxisValue;
+}
+
 
 UPawnMovementComponent* ACollider::GetMovementComponent() const
 {
