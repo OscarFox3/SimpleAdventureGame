@@ -50,7 +50,6 @@ AMain::AMain()
 
 }
 
-
 // Called when the game starts or when spawned
 void AMain::BeginPlay()
 {

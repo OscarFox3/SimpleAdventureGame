@@ -11,17 +11,17 @@ void UMainAnimInstance::NativeInitializeAnimation()
 	{
 		Pawn = TryGetPawnOwner(); // get owner of animation instance
 	}
-
-
 }
 
 void UMainAnimInstance::UpdateAnimationProperties()
 {
+	// Assign PawnOwner to Pawn if true
 	if (Pawn == nullptr)
 	{
 		Pawn = TryGetPawnOwner();
 	}
 
+	// Get animation properties from Pawn
 	if (Pawn)
 	{
 		FVector Speed = Pawn->GetVelocity();
