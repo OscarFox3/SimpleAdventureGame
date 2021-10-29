@@ -5,6 +5,8 @@ This program is focused on showing the software developement skills I learned fr
 Full Project Folder Link: <br />
 https://eaglefgcu-my.sharepoint.com/:f:/g/personal/oefox0055_eagle_fgcu_edu/EvR0dCedU_9Nk5RFiD_YsJMBc0AuqsNE1sUQU7ZyIuWx8A?e=6sceHY
 
+![Sample Image](GamePreview.png)
+
 ## Demonstrate
 
 It is my intention to demonstrate the OOP skills that are involved in a successful project.
