@@ -8,6 +8,7 @@
 #include "Engine/World.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 // Sets default values
 AMain::AMain()
@@ -74,6 +75,7 @@ void AMain::BeginPlay()
 {
 	Super::BeginPlay();
 	
+
 }
 
 // Called every frame
@@ -286,4 +288,14 @@ void AMain::ShiftKeyDown()
 void AMain::ShiftKeyUp()
 {
 	bShiftKeyDown = false;
+}
+
+void AMain::ShowPickupLocations()
+{
+	// auto deduce type and increment through entire container with range based for loop
+	for (auto Location : PickupLocations)
+	{
+		// Debug sphere
+		UKismetSystemLibrary::DrawDebugSphere(this, Location, 25.f, 8, FLinearColor::Green, 10.f, .5f);
+	}
 }

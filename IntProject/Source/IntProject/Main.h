@@ -36,6 +36,12 @@ class INTPROJECT_API AMain : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AMain();
+	
+	// Template container
+	TArray<FVector> PickupLocations;
+
+	UFUNCTION(BlueprintCallable)
+	void ShowPickupLocations();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Enums")
 	EMovementStatus MovementStatus;
