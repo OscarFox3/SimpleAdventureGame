@@ -9,6 +9,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Weapon.h"
 
 // Sets default values
 AMain::AMain()
@@ -60,6 +61,7 @@ AMain::AMain()
 	SprintingSpeed = 950.f;
 
 	bShiftKeyDown = false;
+	bLMBDown = false;
 
 
 	// Initialize Enums
@@ -187,6 +189,9 @@ void AMain::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction("Sprint", IE_Pressed, this, &AMain::ShiftKeyDown);
 	PlayerInputComponent->BindAction("Sprint", IE_Released, this, &AMain::ShiftKeyUp);
 
+	PlayerInputComponent->BindAction("LMB", IE_Pressed, this, &AMain::LMBDown);
+	PlayerInputComponent->BindAction("LMB", IE_Released, this, &AMain::LMBUp);
+
 	// BindAxis called every frame to move
 	PlayerInputComponent->BindAxis("MoveForward", this, &AMain::MoveForward); // Forward key calls function MoveForward
 	PlayerInputComponent->BindAxis("MoveRight", this, &AMain::MoveRight); // Right key calls function MoveRight
@@ -240,6 +245,26 @@ void AMain::LookUpAtRate(float Rate)
 {
 	// function take input and rotate controller
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds()); // gives exactly how much to rotate at frame
+}
+
+void AMain::LMBDown()
+{
+	bLMBDown = true;
+
+	if (ActiveOverlappingItem)
+	{
+		AWeapon* Weapon = Cast<AWeapon>(ActiveOverlappingItem);
+		if (Weapon)
+		{
+			Weapon->Equip(this);
+			SetActiveOverlappingItem(nullptr);
+		}
+	}
+}
+
+void AMain::LMBUp()
+{
+	bLMBDown = false;
 }
 
 void AMain::DecrementHealth(float Amount)
@@ -298,4 +323,14 @@ void AMain::ShowPickupLocations()
 		// Debug sphere
 		UKismetSystemLibrary::DrawDebugSphere(this, Location, 25.f, 8, FLinearColor::Green, 10.f, .5f);
 	}
+}
+
+void AMain::SetEquippedWeapon(AWeapon* WeaponToSet)
+{
+	if (EquippedWeapon)
+	{
+		EquippedWeapon->Destroy();
+	}
+
+	EquippedWeapon = WeaponToSet;
 }
