@@ -32,6 +32,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item | Sounds")
 	class USoundCue* OverlapSound;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item | ItemProperties")
+	bool bRotate;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item | ItemProperties")
+	float RotationRate;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
