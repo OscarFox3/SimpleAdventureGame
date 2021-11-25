@@ -13,6 +13,7 @@ void AMainPlayerController::BeginPlay()
 		// template constructor
 		HUDOverlay = CreateWidget<UUserWidget>(this, HUDOverlayAsset);
 	}
+	// Add HUD to viewport for visibility
 	HUDOverlay->AddToViewport();
 	HUDOverlay->SetVisibility(ESlateVisibility::Visible);
 }

@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Item.generated.h"
 
+
 UCLASS()
 class INTPROJECT_API AItem : public AActor
 {
@@ -22,19 +23,24 @@ public:
 	// Base Mesh Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Item | Mesh")
 	class UStaticMeshComponent* Mesh;
-
+	
+	// Idle particle state for component
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item | Particles")
 	class UParticleSystemComponent* IdleParticlesComponent;
 
+	// Particles for overlap
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item | Particles")
 	class UParticleSystem* OverlapParticles;
 
+	// Sound cue when overlap
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item | Sounds")
 	class USoundCue* OverlapSound;
 
+	// Rotate item
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item | ItemProperties")
 	bool bRotate;
 
+	// Rate of item rotate
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item | ItemProperties")
 	float RotationRate;
 

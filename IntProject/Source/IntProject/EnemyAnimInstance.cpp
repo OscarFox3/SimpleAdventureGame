@@ -4,6 +4,7 @@
 #include "EnemyAnimInstance.h"
 #include "Enemy.h"
 
+
 void UEnemyAnimInstance::NativeInitializeAnimation()
 {
 	if (Pawn == nullptr)
@@ -18,6 +19,7 @@ void UEnemyAnimInstance::NativeInitializeAnimation()
 
 void UEnemyAnimInstance::UpdateAnimationProperties()
 {
+	// Get pawn owner
 	if (Pawn == nullptr)
 	{
 		Pawn = TryGetPawnOwner();
@@ -27,6 +29,7 @@ void UEnemyAnimInstance::UpdateAnimationProperties()
 		}
 	}
 
+	// If pawn is valid set speed of item
 	if (Pawn)
 	{
 		FVector Speed = Pawn->GetVelocity();

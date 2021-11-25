@@ -19,15 +19,19 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Platform")
 	class UStaticMeshComponent* Mesh;
 
+	// Start point for platform movement
 	UPROPERTY(EditAnywhere)
 	FVector StartPoint;
 
+	// End point for platform movement
 	UPROPERTY(EditAnywhere, meta = (MakeEditWidget = "true"))
 	FVector EndPoint;
 
+	// Speed
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Platform")
 	float InterpSpeed;
 
+	// Time
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Platform")
 	float InterpTime;
 
@@ -36,6 +40,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Platform")
 	bool bInterping;
 
+	// Distance of movement
 	float Distance;
 
 protected:

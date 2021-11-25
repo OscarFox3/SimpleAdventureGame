@@ -12,22 +12,28 @@ AFloorSwitch::AFloorSwitch()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	// Root component is set for trigger box functionallity
 	TriggerBox = CreateDefaultSubobject<UBoxComponent>(TEXT("TriggerBox"));
 	RootComponent = TriggerBox;
 
+	// Set trigger box for switch on floor when overlap
 	TriggerBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	TriggerBox->SetCollisionObjectType(ECollisionChannel::ECC_WorldStatic);
 	TriggerBox->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
 	TriggerBox->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 
+	// Box area for trigger
 	TriggerBox->SetBoxExtent(FVector(62.f, 62.f, 32.f));
 
+	// Set attachment for switch static mesh
 	FloorSwitch = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FloorSwitch"));
 	FloorSwitch->SetupAttachment(GetRootComponent());
 
+	// Door attachment static mesh
 	Door = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Door"));
 	Door->SetupAttachment(GetRootComponent());
 
+	// Switch time for character on switch status
 	SwitchTime = 2.f;
 	bCharacterOnSwitch = false;
 }
@@ -37,6 +43,7 @@ void AFloorSwitch::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	// Trigger box on overlap and end overlap
 	TriggerBox->OnComponentBeginOverlap.AddDynamic(this, &AFloorSwitch::OnOverlapBegin);
 	TriggerBox->OnComponentEndOverlap.AddDynamic(this, &AFloorSwitch::OnOverlapEnd);
 
@@ -74,6 +81,7 @@ void AFloorSwitch::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor
 	GetWorldTimerManager().SetTimer(SwitchHandle, this, &AFloorSwitch::CloseDoor, SwitchTime);
 }
 
+// Update door location from initial
 void AFloorSwitch::UpdateDoorLocation(float Z)
 {
 	FVector NewLocation = InitialDoorLocation;
@@ -81,6 +89,7 @@ void AFloorSwitch::UpdateDoorLocation(float Z)
 	Door->SetWorldLocation(NewLocation);
 }
 
+// Update floor switch location from initial
 void  AFloorSwitch::UpdateFloorSwitchLocation(float Z)
 {
 	FVector NewLocation = InitialSwitchLocation;
@@ -88,6 +97,7 @@ void  AFloorSwitch::UpdateFloorSwitchLocation(float Z)
 	FloorSwitch->SetWorldLocation(NewLocation);
 }
 
+// Close door function and lower
 void AFloorSwitch::CloseDoor()
 {
 	if (!bCharacterOnSwitch)

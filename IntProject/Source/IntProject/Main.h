@@ -7,6 +7,7 @@
 #include "Main.generated.h"
 
 
+// State for main character movement status
 UENUM(BlueprintType)
 enum class EMovementStatus : uint8
 {
@@ -17,6 +18,7 @@ enum class EMovementStatus : uint8
 
 };
 
+// State for main character stamina status
 UENUM(BlueprintType)
 enum class EStaminaStatus : uint8
 {
@@ -40,29 +42,38 @@ public:
 	// Template container
 	TArray<FVector> PickupLocations;
 
+	// Function for pickup locations
 	UFUNCTION(BlueprintCallable)
 	void ShowPickupLocations();
 
+	// Movement status
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Enums")
 	EMovementStatus MovementStatus;
 
+	// Stamina status
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Enums")
 	EStaminaStatus StaminaStatus;
 
+	// Inline function set stamina
 	FORCEINLINE void SetStaminaStatus(EStaminaStatus Status) { StaminaStatus = Status; }
 	
+	// Drain rate for stamina
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	float StaminaDrainRate;
 
+	// Minimum sprint section for movement
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	float MinSprintStamina;
 
+	// Running speed section for movement
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Running")
 	float RunningSpeed;
 
+	// Sprinting speed section for movement
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Running")
 	float SprintingSpeed;
 
+	// Shift key
 	bool bShiftKeyDown;
 
 	// Pressed down to enable sprinting
@@ -90,7 +101,6 @@ public:
 
 
 	// Player Stats
-
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Stats")
 	float MaxHealth;
 
@@ -106,10 +116,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
 	int32 Coins;
 
+	// Decrement health by amount
 	void DecrementHealth(float Amount);
 
+	// Increment coin count by amount
 	void IncrementCoins(int32 Amount);
 
+	// Character die function
 	void Die();
 
 
@@ -140,31 +153,40 @@ public:
 	*/
 	void LookUpAtRate(float Rate);
 
+	// Left mouse button
 	bool bLMBDown;
 	void LMBDown();
 	void LMBUp();
 
+	// Inline functions for follow camera boom
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
+	// Equipped weapon
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Items")
 	class AWeapon* EquippedWeapon;
 
+	// Item that character is overlapping
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Items")
 	class AItem* ActiveOverlappingItem;
 
+	// Set equipped weapon
 	void SetEquippedWeapon(AWeapon* WeaponToSet);
 	FORCEINLINE AWeapon* GetEquippedWeapon() { return EquippedWeapon; }
 	FORCEINLINE void SetActiveOverlappingItem(AItem* Item) { ActiveOverlappingItem = Item; }
 
+	// Attacking status
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Anims")
 	bool bAttacking;
 
+	// Attacking function
 	void Attack();
 
+	// End attack function
 	UFUNCTION(BlueprintCallable)
 	void AttackEnd();
 
+	// Combat animation montage
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Anims")
 	class UAnimMontage* CombatMontage;
 };

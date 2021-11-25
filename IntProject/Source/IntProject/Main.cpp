@@ -51,7 +51,6 @@ AMain::AMain()
 	GetCharacterMovement()->JumpZVelocity = 550.f;
 	GetCharacterMovement()->AirControl = 0.2f;
 
-
 	// Default player stats
 	MaxHealth = 100.f;
 	Health = 65.f;
@@ -59,17 +58,19 @@ AMain::AMain()
 	Stamina = 120.f;
 	Coins = 0;
 
+	// Movement speed
 	RunningSpeed = 650.f;
 	SprintingSpeed = 950.f;
 
+	// Button status
 	bShiftKeyDown = false;
 	bLMBDown = false;
-
 
 	// Initialize Enums
 	MovementStatus = EMovementStatus::EMS_Normal;
 	StaminaStatus = EStaminaStatus::ESS_Normal;
 
+	// Stamina properites
 	StaminaDrainRate = 25.f;
 	MinSprintStamina = 50.f;
 }
@@ -87,11 +88,13 @@ void AMain::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	// Drain stamina over tick time
 	float DeltaStamina = StaminaDrainRate * DeltaTime;
 
 	switch (StaminaStatus)
 	{
 	case EStaminaStatus::ESS_Normal:
+		// If shift key is pressed drain stamina
 		if (bShiftKeyDown)
 		{
 			if (Stamina - DeltaStamina <= MinSprintStamina)
@@ -119,6 +122,7 @@ void AMain::Tick(float DeltaTime)
 		}
 		break;
 	case EStaminaStatus::ESS_BelowMinimum:
+		// If shift key pressed and below minimum stamina state
 		if (bShiftKeyDown)
 		{
 			if (Stamina - DeltaStamina <= 0.f)
@@ -148,6 +152,7 @@ void AMain::Tick(float DeltaTime)
 		}
 		break;
 	case EStaminaStatus::ESS_Exhausted:
+		// If shift key pressed and character exhausted state
 		if (bShiftKeyDown)
 		{
 			Stamina = 0.f;
@@ -160,6 +165,7 @@ void AMain::Tick(float DeltaTime)
 		SetMovementStatus(EMovementStatus::EMS_Normal);
 		break;
 	case EStaminaStatus::ESS_ExhaustedRecovering:
+		// Stamina recovery with no sprint functionallity
 		if (Stamina + DeltaStamina >= MinSprintStamina)
 		{
 			SetStaminaStatus(EStaminaStatus::ESS_Normal);
@@ -191,6 +197,7 @@ void AMain::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction("Sprint", IE_Pressed, this, &AMain::ShiftKeyDown);
 	PlayerInputComponent->BindAction("Sprint", IE_Released, this, &AMain::ShiftKeyUp);
 
+	// BindAction called once to pickup item
 	PlayerInputComponent->BindAction("LMB", IE_Pressed, this, &AMain::LMBDown);
 	PlayerInputComponent->BindAction("LMB", IE_Released, this, &AMain::LMBUp);
 
@@ -205,11 +212,9 @@ void AMain::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	// key functionality
 	PlayerInputComponent->BindAxis("TurnRate", this, &AMain::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &AMain::LookUpAtRate);
-
-
 }
 
-
+// Move character forward or backward
 void AMain::MoveForward(float Value)
 {
 	if ((Controller != nullptr) && (Value != 0.0f) && (!bAttacking))
@@ -223,7 +228,7 @@ void AMain::MoveForward(float Value)
 	}
 }
 
-
+// Move character right or left
 void AMain::MoveRight(float Value)
 {
 	if ((Controller != nullptr) && (Value != 0.0f) && (!bAttacking))
@@ -237,46 +242,53 @@ void AMain::MoveRight(float Value)
 	}
 }
 
+// Rate of character turn left/right
 void AMain::TurnAtRate(float Rate)
 {
 	// function take input and rotate controller
 	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds()); // gives exactly how much to rotate at frame
 }
 
+// Rate of character look up/down
 void AMain::LookUpAtRate(float Rate)
 {
 	// function take input and rotate controller
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds()); // gives exactly how much to rotate at frame
 }
 
+// Left mouse button pressed
 void AMain::LMBDown()
 {
 	bLMBDown = true;
 
+	// If character overlap item and press left mouse button
 	if (ActiveOverlappingItem)
 	{
 		AWeapon* Weapon = Cast<AWeapon>(ActiveOverlappingItem);
 		if (Weapon)
 		{
+			// Equip weapon that is overlapped
 			Weapon->Equip(this);
 			SetActiveOverlappingItem(nullptr);
 		}
 	}
 	else if (EquippedWeapon)
 	{
+		// Attack with equipped weapon
 		Attack();
-
-
 	}
 }
 
+// Left mouse button up status
 void AMain::LMBUp()
 {
 	bLMBDown = false;
 }
 
+// Decrement health of character
 void AMain::DecrementHealth(float Amount)
 {
+	// If health equal or below zero die
 	if (Health - Amount <= 0.f)
 	{
 		Health -= Amount;
@@ -284,20 +296,25 @@ void AMain::DecrementHealth(float Amount)
 	}
 	else
 	{
+		// Decrease health
 		Health -= Amount;
 	}
 }
 
+// Increment coin count of character
 void AMain::IncrementCoins(int32 Amount)
 {
+	// Increment coin by amount
 	Coins += Amount;
 }
 
+// Character die function
 void AMain::Die()
 {
 
 }
 
+// Set character movement status for sprint and run
 void AMain::SetMovementStatus(EMovementStatus Status)
 {
 	MovementStatus = Status;
@@ -311,18 +328,19 @@ void AMain::SetMovementStatus(EMovementStatus Status)
 	}
 }
 
-
+// Shift key down status
 void AMain::ShiftKeyDown()
 {
 	bShiftKeyDown = true;
 }
 
-
+// Shift key up status
 void AMain::ShiftKeyUp()
 {
 	bShiftKeyDown = false;
 }
 
+// Debug for pickup locations of items
 void AMain::ShowPickupLocations()
 {
 	// auto deduce type and increment through entire container with range based for loop
@@ -333,33 +351,41 @@ void AMain::ShowPickupLocations()
 	}
 }
 
+// Set equipped weapon
 void AMain::SetEquippedWeapon(AWeapon* WeaponToSet)
 {
 	if (EquippedWeapon)
 	{
+		// Destroy previous weapon after new weapon is picked up
 		EquippedWeapon->Destroy();
 	}
 
 	EquippedWeapon = WeaponToSet;
 }
 
+// Attack function for main character
 void AMain::Attack()
 {
 	if (!bAttacking)
 	{
 		bAttacking = true;
 
+		// Get mesh asset for attack instance
 		UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+		// Play combat montage for attack animations
 		if (AnimInstance && CombatMontage)
 		{
+			// Play attack_1 animation montage
 			AnimInstance->Montage_Play(CombatMontage, 1.35f);
 			AnimInstance->Montage_JumpToSection(FName("Attack_1"), CombatMontage);
 		}
 	}
 }
 
+// End attack function
 void AMain::AttackEnd()
 {
+	// If left mouse button down then attack
 	bAttacking = false;
 	if (bLMBDown)
 	{

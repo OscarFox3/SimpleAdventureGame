@@ -35,13 +35,17 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Floor Switch")
 	FVector InitialSwitchLocation;
 
+	// Timer handle
 	FTimerHandle SwitchHandle;
 
+	// Time for switch
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Floor Switch")
 	float SwitchTime;
 
+	// Character on switch status
 	bool bCharacterOnSwitch;
 
+	// Function to close door
 	void CloseDoor();
 
 protected:
@@ -60,21 +64,27 @@ public:
 	UFUNCTION()
 	void OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	// Raise door
 	UFUNCTION(BlueprintImplementableEvent, Category = "Floor Switch")
 	void RaiseDoor();
 
+	// Lower door
 	UFUNCTION(BlueprintImplementableEvent, Category = "Floor Switch")
 	void LowerDoor();
 
+	// Raise floor switch
 	UFUNCTION(BlueprintImplementableEvent, Category = "Floor Switch")
 	void RaiseFloorSwitch();
 
+	// Lower floor switch
 	UFUNCTION(BlueprintImplementableEvent, Category = "Floor Switch")
 	void LowerFloorSwitch();
 
+	// Update door location
 	UFUNCTION(BlueprintCallable, Category = "Floor Switch")
 	void UpdateDoorLocation(float Z);
 
+	// Update floor switch location
 	UFUNCTION(BlueprintCallable, Category = "Floor Switch")
 	void UpdateFloorSwitchLocation(float Z);
 };

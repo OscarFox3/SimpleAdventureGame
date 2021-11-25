@@ -33,14 +33,17 @@ void ASpawnVolume::Tick(float DeltaTime)
 
 FVector ASpawnVolume::GetSpawnPoint()
 {
+	// Spawn box volume properties
 	FVector Extent = SpawningBox->GetScaledBoxExtent();
 	FVector Origin = SpawningBox->GetComponentLocation();
 
+	// Random point in spawn box for pawn
 	FVector Point = UKismetMathLibrary::RandomPointInBoundingBox(Origin, Extent);
 
 	return Point;
 }
 
+// Spawn volume for a actor in world
 void ASpawnVolume::SpawnOurPawn_Implementation(UClass* ToSpawn, const FVector& Location)
 {
 	if (ToSpawn)

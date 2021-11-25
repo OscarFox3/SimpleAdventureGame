@@ -6,6 +6,7 @@
 #include "Animation/AnimInstance.h"
 #include "MainAnimInstance.generated.h"
 
+
 /**
  * 
  */
@@ -17,6 +18,7 @@ public:
 
 	virtual void NativeInitializeAnimation() override;
 
+	// Update animation
 	UFUNCTION(BlueprintCallable, Category = AnimationProperties)
 	void UpdateAnimationProperties();
 
@@ -28,9 +30,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)
 	bool bIsInAir;
 
+	// Pawn movement
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)
 	class APawn* Pawn;
 
+	// Main character movement
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)
 	class AMain* Main;
 

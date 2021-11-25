@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "SpawnVolume.generated.h"
 
+
 UCLASS()
 class INTPROJECT_API ASpawnVolume : public AActor
 {
@@ -15,9 +16,11 @@ public:
 	// Sets default values for this actor's properties
 	ASpawnVolume();
 
+	// Spawn box area for pawns
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Spawning")
 	class UBoxComponent* SpawningBox;
 
+	// Pawn to spawn in box area
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Spawning")
 	TSubclassOf<class ACritter> PawnToSpawn;
 
@@ -29,9 +32,11 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	// Get vector spawn point
 	UFUNCTION(BlueprintPure, Category = "Spawning")
 	FVector GetSpawnPoint();
 
+	// Function spawn pawn in volume
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Spawning")
 	void SpawnOurPawn(UClass* ToSpawn, const FVector& Location);
 
