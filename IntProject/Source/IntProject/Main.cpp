@@ -5,6 +5,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/PlayerController.h"
+#include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -12,6 +13,9 @@
 #include "Weapon.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Animation/AnimInstance.h"
+#include "Sound/SoundCue.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "Enemy.h"
 
 // Sets default values
 AMain::AMain()
@@ -73,6 +77,9 @@ AMain::AMain()
 	// Stamina properites
 	StaminaDrainRate = 25.f;
 	MinSprintStamina = 50.f;
+
+	InterpSpeed = 15.f;
+	bInterpToEnemy = false;
 }
 
 // Called when the game starts or when spawned
@@ -181,6 +188,21 @@ void AMain::Tick(float DeltaTime)
 		;
 	}
 
+	if (bInterpToEnemy && CombatTarget)
+	{
+		FRotator LookAtYaw = GetLookAtRotationYaw(CombatTarget->GetActorLocation());
+		FRotator InterpRotation = FMath::RInterpTo(GetActorRotation(), LookAtYaw, DeltaTime, InterpSpeed);
+
+		SetActorRotation(InterpRotation);
+	}
+
+}
+
+FRotator AMain::GetLookAtRotationYaw(FVector Target)
+{
+	FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), Target);
+	FRotator LookAtRotationYaw(0.f, LookAtRotation.Yaw, 0.f);
+	return LookAtRotationYaw;
 }
 
 // Called to bind functionality to input
@@ -369,6 +391,7 @@ void AMain::Attack()
 	if (!bAttacking)
 	{
 		bAttacking = true;
+		SetInterpToEnemy(true);
 
 		// Get mesh asset for attack instance
 		UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
@@ -387,8 +410,23 @@ void AMain::AttackEnd()
 {
 	// If left mouse button down then attack
 	bAttacking = false;
+	SetInterpToEnemy(false);
 	if (bLMBDown)
 	{
 		Attack();
 	}
+}
+
+
+void AMain::PlaySwingSound()
+{
+	if (EquippedWeapon->SwingSound)
+	{
+		UGameplayStatics::PlaySound2D(this, EquippedWeapon->SwingSound);
+	}
+}
+
+void AMain::SetInterpToEnemy(bool Interp)
+{
+	bInterpToEnemy = Interp;
 }
