@@ -16,6 +16,7 @@
 #include "Sound/SoundCue.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Enemy.h"
+#include "MainPlayerController.h"
 
 // Sets default values
 AMain::AMain()
@@ -80,6 +81,8 @@ AMain::AMain()
 
 	InterpSpeed = 15.f;
 	bInterpToEnemy = false;
+
+	bHasCombatTarget = false;
 }
 
 // Called when the game starts or when spawned
@@ -87,7 +90,7 @@ void AMain::BeginPlay()
 {
 	Super::BeginPlay();
 	
-
+	MainPlayerController = Cast<AMainPlayerController>(GetController());
 }
 
 // Called every frame
@@ -196,6 +199,14 @@ void AMain::Tick(float DeltaTime)
 		SetActorRotation(InterpRotation);
 	}
 
+	if (CombatTarget)
+	{
+		CombatTargetLocation = CombatTarget->GetActorLocation();
+		if (MainPlayerController)
+		{
+			MainPlayerController->EnemyLocation = CombatTargetLocation;
+		}
+	}
 }
 
 FRotator AMain::GetLookAtRotationYaw(FVector Target)
@@ -333,7 +344,14 @@ void AMain::IncrementCoins(int32 Amount)
 // Character die function
 void AMain::Die()
 {
-
+	// Get mesh asset for attack instance
+	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+	// Play combat montage for attack animations
+	if (AnimInstance && CombatMontage)
+	{
+		AnimInstance->Montage_Play(CombatMontage, 1.0f);
+		AnimInstance->Montage_JumpToSection(FName("Death"));
+	}
 }
 
 // Set character movement status for sprint and run
@@ -429,4 +447,11 @@ void AMain::PlaySwingSound()
 void AMain::SetInterpToEnemy(bool Interp)
 {
 	bInterpToEnemy = Interp;
+}
+
+float AMain::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
+{
+	DecrementHealth(DamageAmount);
+
+	return DamageAmount;
 }
