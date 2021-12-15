@@ -13,6 +13,7 @@ enum class EMovementStatus : uint8
 {
 	EMS_Normal UMETA(DisplayName = "Normal"),
 	EMS_Sprinting UMETA(DisplayName = "Sprinting"),
+	EMS_Dead UMETA(DisplayName = "Dead"),
 
 	EMS_MAX UMETA(DisplayName = "DefaultMAX")
 
@@ -38,6 +39,9 @@ class INTPROJECT_API AMain : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AMain();
+
+	UPROPERTY(EditDefaultsOnly, Category = "SavedData")
+	TSubclassOf<class AItemStorage> WeaponStorage;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
 	bool bHasCombatTarget;
@@ -103,12 +107,17 @@ public:
 
 	// Shift key
 	bool bShiftKeyDown;
-
 	// Pressed down to enable sprinting
 	void ShiftKeyDown();
-
 	// Released to stop sprinting
 	void ShiftKeyUp();
+
+	// ESC key
+	bool bESCDown;
+	// Pressed down to escape
+	void ESCDown();
+	// Released to stop command
+	void ESCUp();
 
 	// Set movement status and running speed
 	void SetMovementStatus(EMovementStatus Status);
@@ -150,10 +159,17 @@ public:
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser) override;
 
 	// Increment coin count by amount
+	UFUNCTION(BlueprintCallable)
 	void IncrementCoins(int32 Amount);
+
+	// Increment health by amount
+	UFUNCTION(BlueprintCallable)
+	void IncrementHealth(float Amount);
 
 	// Character die function
 	void Die();
+
+	virtual void Jump() override;
 
 
 protected:
@@ -172,6 +188,17 @@ public:
 
 	// Called for side to side input movement
 	void MoveRight(float Value);
+
+	// Called for yaw rotation
+	void Turn(float Value);
+
+	// Called for pitch rotation
+	void LookUp(float Value);
+
+	bool bMovingForward;
+	bool bMovingRight;
+
+	bool CanMove(float value);
 
 	/* Called via input to turn at given rate
 	* @param Rate This is a normalized rate, i.e. 1.0 means 100% of desired turn rate
@@ -222,4 +249,18 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void PlaySwingSound();
+
+	UFUNCTION(BlueprintCallable)
+	void DeathEnd();
+
+	void UpdateCombatTarget();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+	TSubclassOf<AEnemy> EnemyFilter;
+
+	UFUNCTION(BlueprintCallable)
+	void SaveGame();
+
+	UFUNCTION(BlueprintCallable)
+	void LoadGame(bool SetPosition);
 };

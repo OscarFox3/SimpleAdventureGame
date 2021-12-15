@@ -27,6 +27,9 @@ public:
 
 	AWeapon();
 
+	UPROPERTY(EditDefaultsOnly, Category = "SavedData")
+	FString Name;
+
 	// Weapon State
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Item")
 	EWeaponState WeaponState;
