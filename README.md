@@ -8,18 +8,24 @@ https://eaglefgcu-my.sharepoint.com/:f:/g/personal/oefox0055_eagle_fgcu_edu/EvR0
 ## Documentation
 Unreal Engine Docs: <br />
 https://docs.unrealengine.com/4.27/en-US/ <br />
-Unreal Engine C++ API Reference: <br />
-https://docs.unrealengine.com/4.27/en-US/API/ <br />
+
+Project Docs: <br />
+https://oscarfox3.github.io/SimpleAdventureGame/html/ <br />
+
+## Demonstrate
+It is my intention to demonstrate the OOP skills that are involved in a successful project. <br />
 
 ![Sample Image](GamePreview.png)
 
-## Demonstrate
+## Style and Structure
+Unreal Engine Programming Reference: <br />
+https://docs.unrealengine.com/4.27/en-US/API/
 
-It is my intention to demonstrate the OOP skills that are involved in a successful project.
+## Quality and Security
+Unreal Engine Coding Standard: <br />
+https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DevelopmentSetup/CodingStandard/
 
-## Design
-
-The design of the project will be constructed with Unreal Engine.
+![Sample Image](ErrorList.png)
 
 ## Software
 
