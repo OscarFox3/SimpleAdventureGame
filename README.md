@@ -15,7 +15,7 @@ https://oscarfox3.github.io/SimpleAdventureGame/html/ <br />
 ## Demonstrate
 It is my intention to demonstrate the OOP skills that are involved in a successful project. <br />
 
-![Sample GIF](GameDemo.gif)
+![Sample GIF](DemoGame.gif)
 
 ## Style and Structure
 Unreal Engine Programming Reference: <br />
