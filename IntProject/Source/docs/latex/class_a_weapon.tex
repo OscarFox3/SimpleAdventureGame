@@ -1,0 +1,116 @@
+\hypertarget{class_a_weapon}{}\doxysection{AWeapon Class Reference}
+\label{class_a_weapon}\index{AWeapon@{AWeapon}}
+Inheritance diagram for AWeapon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_a_weapon}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_a_weapon_a84f2d5def6cbae4f8719fb3a1074a5b0}{On\+Overlap\+Begin}} (UPrimitive\+Component $\ast$Overlapped\+Component, AActor $\ast$Other\+Actor, UPrimitive\+Component $\ast$Other\+Comp, int32 Other\+Body\+Index, bool b\+From\+Sweep, const FHit\+Result \&Sweep\+Result) override
+\item 
+virtual void \mbox{\hyperlink{class_a_weapon_ace6f4c9a1ef8f4672828cffe731d8922}{On\+Overlap\+End}} (UPrimitive\+Component $\ast$Overlapped\+Component, AActor $\ast$Other\+Actor, UPrimitive\+Component $\ast$Other\+Comp, int32 Other\+Body\+Index) override
+\item 
+\mbox{\Hypertarget{class_a_weapon_a81a33ce5a307e3b6ea5d8577c6d37887}\label{class_a_weapon_a81a33ce5a307e3b6ea5d8577c6d37887}} 
+void {\bfseries Equip} (class \mbox{\hyperlink{class_a_main}{AMain}} $\ast$Char)
+\item 
+\mbox{\Hypertarget{class_a_weapon_acf3def04965114c4138e83a77b947ba1}\label{class_a_weapon_acf3def04965114c4138e83a77b947ba1}} 
+FORCEINLINE void {\bfseries Set\+Weapon\+State} (EWeapon\+State State)
+\item 
+\mbox{\Hypertarget{class_a_weapon_a970633967b8bdde472cde03c07f1413a}\label{class_a_weapon_a970633967b8bdde472cde03c07f1413a}} 
+FORCEINLINE EWeapon\+State {\bfseries Get\+Weapon\+State} ()
+\item 
+\mbox{\Hypertarget{class_a_weapon_a0a65dde833549fef9236b92a7896bc2d}\label{class_a_weapon_a0a65dde833549fef9236b92a7896bc2d}} 
+void {\bfseries Combat\+On\+Overlap\+Begin} (UPrimitive\+Component $\ast$Overlapped\+Component, AActor $\ast$Other\+Actor, UPrimitive\+Component $\ast$Other\+Comp, int32 Other\+Body\+Index, bool b\+From\+Sweep, const FHit\+Result \&Sweep\+Result)
+\item 
+\mbox{\Hypertarget{class_a_weapon_a2ac6bc15fd0462ffff5908c7391c365e}\label{class_a_weapon_a2ac6bc15fd0462ffff5908c7391c365e}} 
+void {\bfseries Combat\+On\+Overlap\+End} (UPrimitive\+Component $\ast$Overlapped\+Component, AActor $\ast$Other\+Actor, UPrimitive\+Component $\ast$Other\+Comp, int32 Other\+Body\+Index)
+\item 
+\mbox{\Hypertarget{class_a_weapon_a2ea235fe261feca0696e25f6414623ce}\label{class_a_weapon_a2ea235fe261feca0696e25f6414623ce}} 
+void {\bfseries Activate\+Collision} ()
+\item 
+\mbox{\Hypertarget{class_a_weapon_a40a57c09e15b86c9d2c017fe005cee3b}\label{class_a_weapon_a40a57c09e15b86c9d2c017fe005cee3b}} 
+void {\bfseries Deactivate\+Collision} ()
+\item 
+\mbox{\Hypertarget{class_a_weapon_a8aaf92fef31840b61defc158aa3f0873}\label{class_a_weapon_a8aaf92fef31840b61defc158aa3f0873}} 
+FORCEINLINE void {\bfseries Set\+Instigator} (AController $\ast$Inst)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_weapon_ab24226b2e6507ab9a9ab7d7b6e4c4a13}\label{class_a_weapon_ab24226b2e6507ab9a9ab7d7b6e4c4a13}} 
+FString {\bfseries Name}
+\item 
+\mbox{\Hypertarget{class_a_weapon_a7e5c6518f512f97fc160a996efec014d}\label{class_a_weapon_a7e5c6518f512f97fc160a996efec014d}} 
+EWeapon\+State {\bfseries Weapon\+State}
+\item 
+\mbox{\Hypertarget{class_a_weapon_a529773d1d406a0619277d259c4667ac8}\label{class_a_weapon_a529773d1d406a0619277d259c4667ac8}} 
+bool {\bfseries b\+Weapon\+Particles}
+\item 
+\mbox{\Hypertarget{class_a_weapon_acc208449d296786ef24f4869f03b2747}\label{class_a_weapon_acc208449d296786ef24f4869f03b2747}} 
+class USound\+Cue $\ast$ {\bfseries On\+Equip\+Sound}
+\item 
+\mbox{\Hypertarget{class_a_weapon_a781c2aea138750617460c4298e4b0da6}\label{class_a_weapon_a781c2aea138750617460c4298e4b0da6}} 
+USound\+Cue $\ast$ {\bfseries Swing\+Sound}
+\item 
+\mbox{\Hypertarget{class_a_weapon_ac04750650626fc1a31ff0349814df227}\label{class_a_weapon_ac04750650626fc1a31ff0349814df227}} 
+class USkeletal\+Mesh\+Component $\ast$ {\bfseries Skeletal\+Mesh}
+\item 
+\mbox{\Hypertarget{class_a_weapon_a2e944dba44b8b71059daf09bc9df1b10}\label{class_a_weapon_a2e944dba44b8b71059daf09bc9df1b10}} 
+class UBox\+Component $\ast$ {\bfseries Combat\+Collision}
+\item 
+\mbox{\Hypertarget{class_a_weapon_a214c34dc9ef2fe50bf6bd083edb1d5d2}\label{class_a_weapon_a214c34dc9ef2fe50bf6bd083edb1d5d2}} 
+float {\bfseries Damage}
+\item 
+\mbox{\Hypertarget{class_a_weapon_a5b7ea8c4873b63df93c81902ad7209ac}\label{class_a_weapon_a5b7ea8c4873b63df93c81902ad7209ac}} 
+TSubclass\+Of$<$ UDamage\+Type $>$ {\bfseries Damage\+Type\+Class}
+\item 
+\mbox{\Hypertarget{class_a_weapon_a45e8fff1030c9801339f591bb15b222e}\label{class_a_weapon_a45e8fff1030c9801339f591bb15b222e}} 
+AController $\ast$ {\bfseries Weapon\+Instigator}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_a_weapon_ac7b8b5af7789df37243bd2391829d906}{Begin\+Play}} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_weapon_ac7b8b5af7789df37243bd2391829d906}\label{class_a_weapon_ac7b8b5af7789df37243bd2391829d906}} 
+\index{AWeapon@{AWeapon}!BeginPlay@{BeginPlay}}
+\index{BeginPlay@{BeginPlay}!AWeapon@{AWeapon}}
+\doxysubsubsection{\texorpdfstring{BeginPlay()}{BeginPlay()}}
+{\footnotesize\ttfamily void AWeapon\+::\+Begin\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_a_item}{AItem}}.
+
+\mbox{\Hypertarget{class_a_weapon_a84f2d5def6cbae4f8719fb3a1074a5b0}\label{class_a_weapon_a84f2d5def6cbae4f8719fb3a1074a5b0}} 
+\index{AWeapon@{AWeapon}!OnOverlapBegin@{OnOverlapBegin}}
+\index{OnOverlapBegin@{OnOverlapBegin}!AWeapon@{AWeapon}}
+\doxysubsubsection{\texorpdfstring{OnOverlapBegin()}{OnOverlapBegin()}}
+{\footnotesize\ttfamily void AWeapon\+::\+On\+Overlap\+Begin (\begin{DoxyParamCaption}\item[{UPrimitive\+Component $\ast$}]{Overlapped\+Component,  }\item[{AActor $\ast$}]{Other\+Actor,  }\item[{UPrimitive\+Component $\ast$}]{Other\+Comp,  }\item[{int32}]{Other\+Body\+Index,  }\item[{bool}]{b\+From\+Sweep,  }\item[{const FHit\+Result \&}]{Sweep\+Result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_a_item}{AItem}}.
+
+\mbox{\Hypertarget{class_a_weapon_ace6f4c9a1ef8f4672828cffe731d8922}\label{class_a_weapon_ace6f4c9a1ef8f4672828cffe731d8922}} 
+\index{AWeapon@{AWeapon}!OnOverlapEnd@{OnOverlapEnd}}
+\index{OnOverlapEnd@{OnOverlapEnd}!AWeapon@{AWeapon}}
+\doxysubsubsection{\texorpdfstring{OnOverlapEnd()}{OnOverlapEnd()}}
+{\footnotesize\ttfamily void AWeapon\+::\+On\+Overlap\+End (\begin{DoxyParamCaption}\item[{UPrimitive\+Component $\ast$}]{Overlapped\+Component,  }\item[{AActor $\ast$}]{Other\+Actor,  }\item[{UPrimitive\+Component $\ast$}]{Other\+Comp,  }\item[{int32}]{Other\+Body\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_a_item}{AItem}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/oscar/\+Desktop/\+Simple\+Adventure\+Game\+Local/\+Int\+Project/\+Source/\+Int\+Project/Weapon.\+h\item 
+C\+:/\+Users/oscar/\+Desktop/\+Simple\+Adventure\+Game\+Local/\+Int\+Project/\+Source/\+Int\+Project/\mbox{\hyperlink{_weapon_8cpp}{Weapon.\+cpp}}\end{DoxyCompactItemize}

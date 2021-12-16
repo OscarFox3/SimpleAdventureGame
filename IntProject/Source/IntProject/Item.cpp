@@ -1,5 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file Item.cpp
 
+ *  @brief This file has functionallity for Item objects with dynamic overlap.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "Item.h"
 #include "Components/SphereComponent.h"

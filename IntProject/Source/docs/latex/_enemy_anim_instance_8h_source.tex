@@ -1,0 +1,36 @@
+\hypertarget{_enemy_anim_instance_8h_source}{}\doxysection{Enemy\+Anim\+Instance.\+h}
+\label{_enemy_anim_instance_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/EnemyAnimInstance.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/EnemyAnimInstance.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Animation/AnimInstance.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}EnemyAnimInstance.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{12 UCLASS()}
+\DoxyCodeLine{13 class INTPROJECT\_API \mbox{\hyperlink{class_u_enemy_anim_instance}{UEnemyAnimInstance}} : public UAnimInstance}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15     GENERATED\_BODY()}
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} NativeInitializeAnimation() \textcolor{keyword}{override};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     UFUNCTION(BlueprintCallable, Category = AnimationProperties)}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} UpdateAnimationProperties();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{comment}{// Declare for character instance speed}}
+\DoxyCodeLine{25     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)}
+\DoxyCodeLine{26     \textcolor{keywordtype}{float} MovementSpeed;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)}
+\DoxyCodeLine{29     \textcolor{keyword}{class }APawn* Pawn;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)}
+\DoxyCodeLine{32     \textcolor{keyword}{class }\mbox{\hyperlink{class_a_enemy}{AEnemy}}* Enemy;}
+\DoxyCodeLine{33 \};}
+
+\end{DoxyCode}

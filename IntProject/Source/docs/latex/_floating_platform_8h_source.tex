@@ -1,0 +1,63 @@
+\hypertarget{_floating_platform_8h_source}{}\doxysection{Floating\+Platform.\+h}
+\label{_floating_platform_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/FloatingPlatform.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/FloatingPlatform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GameFramework/Actor.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}FloatingPlatform.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 UCLASS()}
+\DoxyCodeLine{10 class INTPROJECT\_API \mbox{\hyperlink{class_a_floating_platform}{AFloatingPlatform}} : public AActor}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     GENERATED\_BODY()}
+\DoxyCodeLine{13     }
+\DoxyCodeLine{14 \textcolor{keyword}{public}: }
+\DoxyCodeLine{15     \textcolor{comment}{// Sets default values for this actor's properties}}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_a_floating_platform}{AFloatingPlatform}}();}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{comment}{// Mesh for the platform}}
+\DoxyCodeLine{19     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Platform"{}})}
+\DoxyCodeLine{20     \textcolor{keyword}{class }UStaticMeshComponent* Mesh;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{comment}{// Start point for platform movement}}
+\DoxyCodeLine{23     UPROPERTY(EditAnywhere)}
+\DoxyCodeLine{24     FVector StartPoint;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{comment}{// End point for platform movement}}
+\DoxyCodeLine{27     UPROPERTY(EditAnywhere, meta = (MakeEditWidget = \textcolor{stringliteral}{"{}true"{}}))}
+\DoxyCodeLine{28     FVector EndPoint;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{comment}{// Speed}}
+\DoxyCodeLine{31     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Platform"{}})}
+\DoxyCodeLine{32     \textcolor{keywordtype}{float} InterpSpeed;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{comment}{// Time}}
+\DoxyCodeLine{35     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Platform"{}})}
+\DoxyCodeLine{36     \textcolor{keywordtype}{float} InterpTime;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     FTimerHandle InterpTimer;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Platform"{}})}
+\DoxyCodeLine{41     \textcolor{keywordtype}{bool} bInterping;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{comment}{// Distance of movement}}
+\DoxyCodeLine{44     \textcolor{keywordtype}{float} Distance;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{47     \textcolor{comment}{// Called when the game starts or when spawned}}
+\DoxyCodeLine{48     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} BeginPlay() \textcolor{keyword}{override};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{keyword}{public}: }
+\DoxyCodeLine{51     \textcolor{comment}{// Called every frame}}
+\DoxyCodeLine{52     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Tick(\textcolor{keywordtype}{float} DeltaTime) \textcolor{keyword}{override};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} ToggleInterping();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} SwapVectors(FVector\& VecOne, FVector\& VecTwo);}
+\DoxyCodeLine{57 \};}
+
+\end{DoxyCode}

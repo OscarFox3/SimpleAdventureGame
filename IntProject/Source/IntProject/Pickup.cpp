@@ -1,5 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file Pickup.cpp
 
+ *  @brief This file has functionallity for Pickup item objects on overlap.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "Pickup.h"
 #include "Main.h"

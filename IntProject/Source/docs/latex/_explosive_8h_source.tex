@@ -1,0 +1,36 @@
+\hypertarget{_explosive_8h_source}{}\doxysection{Explosive.\+h}
+\label{_explosive_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Explosive.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Explosive.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Item.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Explosive.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{12 UCLASS()}
+\DoxyCodeLine{13 class INTPROJECT\_API \mbox{\hyperlink{class_a_explosive}{AExplosive}} : public \mbox{\hyperlink{class_a_item}{AItem}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15     GENERATED\_BODY()}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \mbox{\hyperlink{class_a_explosive}{AExplosive}}();}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{comment}{// Damage of explosion}}
+\DoxyCodeLine{22     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Damage"{}})}
+\DoxyCodeLine{23     \textcolor{keywordtype}{float} Damage;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{comment}{// Function when overlap onto explosion}}
+\DoxyCodeLine{26     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, \textcolor{keywordtype}{bool} bFromSweep, \textcolor{keyword}{const} FHitResult\& SweepResult) \textcolor{keyword}{override};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{comment}{// Function when overlap off explosion}}
+\DoxyCodeLine{29     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex) \textcolor{keyword}{override};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{32     TSubclassOf<UDamageType> DamageTypeClass;}
+\DoxyCodeLine{33 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,64 @@
+\hypertarget{_spawn_volume_8h_source}{}\doxysection{Spawn\+Volume.\+h}
+\label{_spawn_volume_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/SpawnVolume.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/SpawnVolume.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GameFramework/Actor.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}SpawnVolume.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 UCLASS()}
+\DoxyCodeLine{11 class INTPROJECT\_API \mbox{\hyperlink{class_a_spawn_volume}{ASpawnVolume}} : public AActor}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     GENERATED\_BODY()}
+\DoxyCodeLine{14     }
+\DoxyCodeLine{15 \textcolor{keyword}{public}: }
+\DoxyCodeLine{16     \textcolor{comment}{// Sets default values for this actor's properties}}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_a_spawn_volume}{ASpawnVolume}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{comment}{// Spawn box area for pawns}}
+\DoxyCodeLine{20     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Spawning"{}})}
+\DoxyCodeLine{21     \textcolor{keyword}{class }UBoxComponent* SpawningBox;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{comment}{// Spawn in box area}}
+\DoxyCodeLine{24     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Spawning"{}})}
+\DoxyCodeLine{25     TSubclassOf<AActor> Actor\_1;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Spawning"{}})}
+\DoxyCodeLine{28     TSubclassOf<AActor> Actor\_2;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Spawning"{}})}
+\DoxyCodeLine{31     TSubclassOf<AActor> Actor\_3;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Spawning"{}})}
+\DoxyCodeLine{34     TSubclassOf<AActor> Actor\_4;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     TArray<TSubclassOf<AActor>> SpawnArray;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{39     \textcolor{comment}{// Called when the game starts or when spawned}}
+\DoxyCodeLine{40     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} BeginPlay() \textcolor{keyword}{override};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{public}: }
+\DoxyCodeLine{43     \textcolor{comment}{// Called every frame}}
+\DoxyCodeLine{44     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Tick(\textcolor{keywordtype}{float} DeltaTime) \textcolor{keyword}{override};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{comment}{// Get vector spawn point}}
+\DoxyCodeLine{47     UFUNCTION(BlueprintPure, Category = \textcolor{stringliteral}{"{}Spawning"{}})}
+\DoxyCodeLine{48     FVector GetSpawnPoint();}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     UFUNCTION(BlueprintPure, Category = \textcolor{stringliteral}{"{}Spawning"{}})}
+\DoxyCodeLine{51     TSubclassOf<AActor> GetSpawnActor();}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \textcolor{comment}{// Function spawn pawn in volume}}
+\DoxyCodeLine{54     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = \textcolor{stringliteral}{"{}Spawning"{}})}
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} SpawnOurActor(UClass* ToSpawn, \textcolor{keyword}{const} FVector\& Location);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \};}
+\DoxyCodeLine{58 }
+
+\end{DoxyCode}

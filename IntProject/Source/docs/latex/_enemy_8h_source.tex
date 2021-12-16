@@ -1,0 +1,161 @@
+\hypertarget{_enemy_8h_source}{}\doxysection{Enemy.\+h}
+\label{_enemy_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Enemy.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Enemy.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GameFramework/Character.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Enemy.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// States for Enemy movement/combat}}
+\DoxyCodeLine{11 UENUM(BlueprintType)}
+\DoxyCodeLine{12 \textcolor{keyword}{enum class} EEnemyMovementStatus :uint8}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     EMS\_Idle            UMETA(DeplayName = \textcolor{stringliteral}{"{}Idle"{}}),}
+\DoxyCodeLine{15     EMS\_MoveToTarget    UMETA(DeplayName = \textcolor{stringliteral}{"{}MoveToTarget"{}}),}
+\DoxyCodeLine{16     EMS\_Attacking       UMETA(DeplayName = \textcolor{stringliteral}{"{}Attacking"{}}),}
+\DoxyCodeLine{17     EMS\_Dead            UMETA(DeplayName = \textcolor{stringliteral}{"{}Dead"{}}),}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     EMS\_MAX             UMETA(DeplayName = \textcolor{stringliteral}{"{}DefaultMAX"{}})}
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 UCLASS()}
+\DoxyCodeLine{23 class INTPROJECT\_API \mbox{\hyperlink{class_a_enemy}{AEnemy}} : public ACharacter  \textcolor{comment}{// (LO2) AEnemy is a subclass of ACharacter}}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     GENERATED\_BODY()}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{public}:  \textcolor{comment}{// (LO2a) AEnemy inherited properties from ACharacter public, which does not reduce visibility}}
+\DoxyCodeLine{28     \textcolor{comment}{// Sets default values for this character's properties}}
+\DoxyCodeLine{29     \mbox{\hyperlink{class_a_enemy}{AEnemy}}();}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keywordtype}{bool} bHasValidTarget;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Movement"{}})}
+\DoxyCodeLine{34     EEnemyMovementStatus EnemyMovementStatus;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     FORCEINLINE \textcolor{keywordtype}{void} SetEnemyMovementStatus(EEnemyMovementStatus Status) \{ EnemyMovementStatus = Status; \}}
+\DoxyCodeLine{37     FORCEINLINE EEnemyMovementStatus GetEnemyMovementStatus() \{ \textcolor{keywordflow}{return} EnemyMovementStatus; \}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{40     \textcolor{keyword}{class }USphereComponent* AgroSphere;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{43     USphereComponent* CombatSphere;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{46     \textcolor{keyword}{class }AAIController* AIController;}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{49     \textcolor{keywordtype}{float} Health;}
+\DoxyCodeLine{50     }
+\DoxyCodeLine{51     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{52     \textcolor{keywordtype}{float} MaxHealth;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{55     \textcolor{keywordtype}{float} Damage;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{58     \textcolor{keyword}{class }UParticleSystem* HitParticles;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{61     \textcolor{keyword}{class }USoundCue* HitSound;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{64     USoundCue* SwingSound;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{67     \textcolor{keyword}{class }UBoxComponent* CombatCollision;}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{70     \textcolor{keyword}{class }UAnimMontage* CombatMontage;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     FTimerHandle AttackTimer;}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{75     \textcolor{keywordtype}{float} AttackMinTime;}
+\DoxyCodeLine{76     }
+\DoxyCodeLine{77     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{78     \textcolor{keywordtype}{float} AttackMaxTime;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{81     TSubclassOf<UDamageType> DamageTypeClass; }
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     FTimerHandle DeathTimer;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{86     \textcolor{keywordtype}{float} DeathDelay;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{89     \textcolor{comment}{// Called when the game starts or when spawned}}
+\DoxyCodeLine{90     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} BeginPlay() \textcolor{keyword}{override};}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{keyword}{public}: }
+\DoxyCodeLine{93     \textcolor{comment}{// Called every frame}}
+\DoxyCodeLine{94     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Tick(\textcolor{keywordtype}{float} DeltaTime) \textcolor{keyword}{override};}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     \textcolor{comment}{// Called to bind functionality to input}}
+\DoxyCodeLine{97     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} SetupPlayerInputComponent(\textcolor{keyword}{class} UInputComponent* PlayerInputComponent) \textcolor{keyword}{override};}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     \textcolor{comment}{// Agro sphere}}
+\DoxyCodeLine{100     UFUNCTION()}
+\DoxyCodeLine{101     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} AgroSphereOnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, \textcolor{keywordtype}{bool} bFromSweep, \textcolor{keyword}{const} FHitResult\& SweepResult);}
+\DoxyCodeLine{102     UFUNCTION()}
+\DoxyCodeLine{103     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} AgroSphereOnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \textcolor{comment}{// Combat sphere}}
+\DoxyCodeLine{106     UFUNCTION()}
+\DoxyCodeLine{107     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} CombatSphereOnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, \textcolor{keywordtype}{bool} bFromSweep, \textcolor{keyword}{const} FHitResult\& SweepResult);}
+\DoxyCodeLine{108     UFUNCTION()}
+\DoxyCodeLine{109     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} CombatSphereOnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111     \textcolor{comment}{// Enemy move to target in Agro sphere}}
+\DoxyCodeLine{112     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{113     \textcolor{keywordtype}{void} MoveToTarget(\textcolor{keyword}{class} \mbox{\hyperlink{class_a_main}{AMain}}* Target);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{comment}{// Overlap combat sphere status}}
+\DoxyCodeLine{116     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{117     \textcolor{keywordtype}{bool} bOverlappingCombatSphere;}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     \textcolor{comment}{// Target for combat}}
+\DoxyCodeLine{120     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}AI"{}})}
+\DoxyCodeLine{121     \mbox{\hyperlink{class_a_main}{AMain}}* CombatTarget;}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     \textcolor{comment}{// Overlap for Combat}}
+\DoxyCodeLine{124     UFUNCTION()}
+\DoxyCodeLine{125     \textcolor{keywordtype}{void} CombatOnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, \textcolor{keywordtype}{bool} bFromSweep, \textcolor{keyword}{const} FHitResult\& SweepResult);}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{comment}{// Overlap end Combat}}
+\DoxyCodeLine{128     UFUNCTION()}
+\DoxyCodeLine{129     \textcolor{keywordtype}{void} CombatOnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{132     \textcolor{keywordtype}{void} ActivateCollision();}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{135     \textcolor{keywordtype}{void} DeactivateCollision();}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{138     \textcolor{keywordtype}{bool} bAttacking;}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     \textcolor{keywordtype}{void} Attack();}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{143     \textcolor{keywordtype}{void} AttackEnd();}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145     \textcolor{keyword}{virtual} \textcolor{keywordtype}{float} TakeDamage(\textcolor{keywordtype}{float} DamageAmount, \textcolor{keyword}{struct} FDamageEvent \textcolor{keyword}{const}\& DamageEvent, \textcolor{keyword}{class} AController* EventInstigator, AActor* DamageCauser) \textcolor{keyword}{override};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147     \textcolor{keywordtype}{void} Die(AActor* Causer);}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{150     \textcolor{keywordtype}{void} DeathEnd();}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152     \textcolor{keywordtype}{bool} Alive();}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154     \textcolor{keywordtype}{void} Disappear();}
+\DoxyCodeLine{155 \};}
+
+\end{DoxyCode}

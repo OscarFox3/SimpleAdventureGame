@@ -1,0 +1,272 @@
+\hypertarget{_main_8h_source}{}\doxysection{Main.\+h}
+\label{_main_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Main.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Main.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GameFramework/Character.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Main.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// State for main character movement status}}
+\DoxyCodeLine{11 UENUM(BlueprintType)}
+\DoxyCodeLine{12 \textcolor{keyword}{enum class} EMovementStatus : uint8}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     EMS\_Normal UMETA(DisplayName = \textcolor{stringliteral}{"{}Normal"{}}),}
+\DoxyCodeLine{15     EMS\_Sprinting UMETA(DisplayName = \textcolor{stringliteral}{"{}Sprinting"{}}),}
+\DoxyCodeLine{16     EMS\_Dead UMETA(DisplayName = \textcolor{stringliteral}{"{}Dead"{}}),}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     EMS\_MAX UMETA(DisplayName = \textcolor{stringliteral}{"{}DefaultMAX"{}})}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// State for main character stamina status}}
+\DoxyCodeLine{23 UENUM(BlueprintType)}
+\DoxyCodeLine{24 \textcolor{keyword}{enum class} EStaminaStatus : uint8}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26     ESS\_Normal UMETA(DisplayName = \textcolor{stringliteral}{"{}Normal"{}}),}
+\DoxyCodeLine{27     ESS\_BelowMinimum UMETA(DisplayName = \textcolor{stringliteral}{"{}BelowMinimum"{}}),}
+\DoxyCodeLine{28     ESS\_Exhausted UMETA(DisplayName = \textcolor{stringliteral}{"{}Exhausted"{}}),}
+\DoxyCodeLine{29     ESS\_ExhaustedRecovering UMETA(DisplayName = \textcolor{stringliteral}{"{}ExhaustedRecovering"{}}),}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     ESS\_MAX UMETA(DisplayName = \textcolor{stringliteral}{"{}DefaultMAX"{}})}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 UCLASS()}
+\DoxyCodeLine{35 class INTPROJECT\_API \mbox{\hyperlink{class_a_main}{AMain}} : public ACharacter \textcolor{comment}{// (LO1)}}
+\DoxyCodeLine{36 \{}
+\DoxyCodeLine{37     GENERATED\_BODY()}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{keyword}{public}:}
+\DoxyCodeLine{40     \textcolor{comment}{// Sets default values for this character's properties}}
+\DoxyCodeLine{41     \mbox{\hyperlink{class_a_main}{AMain}}();}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     UPROPERTY(EditDefaultsOnly, Category = \textcolor{stringliteral}{"{}SavedData"{}})}
+\DoxyCodeLine{44     TSubclassOf<class AItemStorage> WeaponStorage;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{47     \textcolor{keywordtype}{bool} bHasCombatTarget;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     FORCEINLINE \textcolor{keywordtype}{void} SetHasCombatTarget(\textcolor{keywordtype}{bool} HasTarget) \{ bHasCombatTarget = HasTarget; \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{52     FVector CombatTargetLocation;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Controller"{}})}
+\DoxyCodeLine{55     \textcolor{keyword}{class }\mbox{\hyperlink{class_a_main_player_controller}{AMainPlayerController}}* MainPlayerController;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{58     \textcolor{keyword}{class }UParticleSystem* HitParticles;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{61     \textcolor{keyword}{class }USoundCue* HitSound;}
+\DoxyCodeLine{62     }
+\DoxyCodeLine{63     \textcolor{comment}{// Template container}}
+\DoxyCodeLine{64     TArray<FVector> PickupLocations;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{comment}{// Function for pickup locations}}
+\DoxyCodeLine{67     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} ShowPickupLocations();}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{comment}{// Movement status}}
+\DoxyCodeLine{71     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Enums"{}})}
+\DoxyCodeLine{72     EMovementStatus MovementStatus;}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{comment}{// Stamina status}}
+\DoxyCodeLine{75     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Enums"{}})}
+\DoxyCodeLine{76     EStaminaStatus StaminaStatus;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \textcolor{comment}{// Inline function set stamina}}
+\DoxyCodeLine{79     FORCEINLINE \textcolor{keywordtype}{void} SetStaminaStatus(EStaminaStatus Status) \{ StaminaStatus = Status; \}}
+\DoxyCodeLine{80     }
+\DoxyCodeLine{81     \textcolor{comment}{// Drain rate for stamina}}
+\DoxyCodeLine{82     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Movement"{}})}
+\DoxyCodeLine{83     \textcolor{keywordtype}{float} StaminaDrainRate;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{comment}{// Minimum sprint section for movement}}
+\DoxyCodeLine{86     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Movement"{}})}
+\DoxyCodeLine{87     \textcolor{keywordtype}{float} MinSprintStamina;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     \textcolor{keywordtype}{float} InterpSpeed;}
+\DoxyCodeLine{90     \textcolor{keywordtype}{bool} bInterpToEnemy;}
+\DoxyCodeLine{91     \textcolor{keywordtype}{void} SetInterpToEnemy(\textcolor{keywordtype}{bool} Interp);}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{94     \textcolor{keyword}{class }\mbox{\hyperlink{class_a_enemy}{AEnemy}}* CombatTarget;}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     FORCEINLINE \textcolor{keywordtype}{void} SetCombatTarget(\mbox{\hyperlink{class_a_enemy}{AEnemy}}* Target) \{ CombatTarget = Target; \}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     FRotator GetLookAtRotationYaw(FVector Target);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{comment}{// Running speed section for movement}}
+\DoxyCodeLine{101     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Running"{}})}
+\DoxyCodeLine{102     \textcolor{keywordtype}{float} RunningSpeed;}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104     \textcolor{comment}{// Sprinting speed section for movement}}
+\DoxyCodeLine{105     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Running"{}})}
+\DoxyCodeLine{106     \textcolor{keywordtype}{float} SprintingSpeed;}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     \textcolor{comment}{// Shift key}}
+\DoxyCodeLine{109     \textcolor{keywordtype}{bool} bShiftKeyDown;}
+\DoxyCodeLine{110     \textcolor{comment}{// Pressed down to enable sprinting}}
+\DoxyCodeLine{111     \textcolor{keywordtype}{void} ShiftKeyDown();}
+\DoxyCodeLine{112     \textcolor{comment}{// Released to stop sprinting}}
+\DoxyCodeLine{113     \textcolor{keywordtype}{void} ShiftKeyUp();}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{comment}{// ESC key}}
+\DoxyCodeLine{116     \textcolor{keywordtype}{bool} bESCDown;}
+\DoxyCodeLine{117     \textcolor{comment}{// Pressed down to escape}}
+\DoxyCodeLine{118     \textcolor{keywordtype}{void} ESCDown();}
+\DoxyCodeLine{119     \textcolor{comment}{// Released to stop command}}
+\DoxyCodeLine{120     \textcolor{keywordtype}{void} ESCUp();}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     \textcolor{comment}{// Set movement status and running speed}}
+\DoxyCodeLine{123     \textcolor{keywordtype}{void} SetMovementStatus(EMovementStatus Status);  \textcolor{comment}{// (LO1a)}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     \textcolor{comment}{// Camera boom positioning the camera behind the player}}
+\DoxyCodeLine{126     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = \textcolor{stringliteral}{"{}true"{}}))}
+\DoxyCodeLine{127     \textcolor{keyword}{class }USpringArmComponent* CameraBoom;}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     \textcolor{comment}{// Follow Camera}}
+\DoxyCodeLine{130     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = \textcolor{stringliteral}{"{}true"{}}))}
+\DoxyCodeLine{131     \textcolor{keyword}{class }UCameraComponent* FollowCamera;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133     \textcolor{comment}{// Base turn rates to scale turning functions for the camera}}
+\DoxyCodeLine{134     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)}
+\DoxyCodeLine{135     \textcolor{keywordtype}{float} BaseTurnRate;}
+\DoxyCodeLine{136     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)}
+\DoxyCodeLine{137     \textcolor{keywordtype}{float} BaseLookUpRate;}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     \textcolor{comment}{// Player Stats}}
+\DoxyCodeLine{141     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Player Stats"{}})}
+\DoxyCodeLine{142     \textcolor{keywordtype}{float} MaxHealth;}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Player Stats"{}})}
+\DoxyCodeLine{145     \textcolor{keywordtype}{float} Health;}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Player Stats"{}})}
+\DoxyCodeLine{148     \textcolor{keywordtype}{float} MaxStamina;}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Player Stats"{}})}
+\DoxyCodeLine{151     \textcolor{keywordtype}{float} Stamina;}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Player Stats"{}})}
+\DoxyCodeLine{154     int32 Coins;}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     \textcolor{comment}{// Decrement health by amount}}
+\DoxyCodeLine{157     \textcolor{keywordtype}{void} DecrementHealth(\textcolor{keywordtype}{float} Amount);}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     \textcolor{keyword}{virtual} \textcolor{keywordtype}{float} TakeDamage(\textcolor{keywordtype}{float} DamageAmount, \textcolor{keyword}{struct} FDamageEvent \textcolor{keyword}{const} \& DamageEvent, \textcolor{keyword}{class} AController * EventInstigator, AActor * DamageCauser) \textcolor{keyword}{override};}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161     \textcolor{comment}{// Increment coin count by amount}}
+\DoxyCodeLine{162     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{163     \textcolor{keywordtype}{void} IncrementCoins(int32 Amount);}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{165     \textcolor{comment}{// Increment health by amount}}
+\DoxyCodeLine{166     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{167     \textcolor{keywordtype}{void} IncrementHealth(\textcolor{keywordtype}{float} Amount);}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     \textcolor{comment}{// Character die function}}
+\DoxyCodeLine{170     \textcolor{keywordtype}{void} Die();}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Jump() \textcolor{keyword}{override};}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175 \textcolor{keyword}{protected}:  \textcolor{comment}{// Encapsulation information hiding to derived classes (LO6)}}
+\DoxyCodeLine{176     \textcolor{comment}{// Called when the game starts or when spawned}}
+\DoxyCodeLine{177     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} BeginPlay() \textcolor{keyword}{override};}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179 \textcolor{keyword}{public}: }
+\DoxyCodeLine{180     \textcolor{comment}{// Called every frame}}
+\DoxyCodeLine{181     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Tick(\textcolor{keywordtype}{float} DeltaTime) \textcolor{keyword}{override}; \textcolor{comment}{// Dynamic Dispatch method call at run time (LO3)}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183     \textcolor{comment}{// Called to bind functionality to input}}
+\DoxyCodeLine{184     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} SetupPlayerInputComponent(\textcolor{keyword}{class} UInputComponent* PlayerInputComponent) \textcolor{keyword}{override}; \textcolor{comment}{// virtual override function (LO5)}}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186     \textcolor{comment}{// Called for forwards/backwards input movement}}
+\DoxyCodeLine{187     \textcolor{keywordtype}{void} MoveForward(\textcolor{keywordtype}{float} Value);}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189     \textcolor{comment}{// Called for side to side input movement}}
+\DoxyCodeLine{190     \textcolor{keywordtype}{void} MoveRight(\textcolor{keywordtype}{float} Value);}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     \textcolor{comment}{// Called for yaw rotation}}
+\DoxyCodeLine{193     \textcolor{keywordtype}{void} Turn(\textcolor{keywordtype}{float} Value);}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195     \textcolor{comment}{// Called for pitch rotation}}
+\DoxyCodeLine{196     \textcolor{keywordtype}{void} LookUp(\textcolor{keywordtype}{float} Value);}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198     \textcolor{keywordtype}{bool} bMovingForward;}
+\DoxyCodeLine{199     \textcolor{keywordtype}{bool} bMovingRight;}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201     \textcolor{keywordtype}{bool} CanMove(\textcolor{keywordtype}{float} value);}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203     \textcolor{comment}{/* Called via input to turn at given rate}}
+\DoxyCodeLine{204 \textcolor{comment}{    * @param Rate This is a normalized rate, i.e. 1.0 means 100\% of desired turn rate}}
+\DoxyCodeLine{205 \textcolor{comment}{    */}}
+\DoxyCodeLine{206     \textcolor{keywordtype}{void} TurnAtRate(\textcolor{keywordtype}{float} Rate);}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208     \textcolor{comment}{/* Called via input to look up/down at given rate}}
+\DoxyCodeLine{209 \textcolor{comment}{    * @param Rate This is a normalized rate, i.e. 1.0 means 100\% of desired look up/down rate}}
+\DoxyCodeLine{210 \textcolor{comment}{    */}}
+\DoxyCodeLine{211     \textcolor{keywordtype}{void} LookUpAtRate(\textcolor{keywordtype}{float} Rate);}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213     \textcolor{comment}{// Left mouse button}}
+\DoxyCodeLine{214     \textcolor{keywordtype}{bool} bLMBDown;}
+\DoxyCodeLine{215     \textcolor{keywordtype}{void} LMBDown();}
+\DoxyCodeLine{216     \textcolor{keywordtype}{void} LMBUp();}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218     \textcolor{comment}{// Inline functions for follow camera boom}}
+\DoxyCodeLine{219     FORCEINLINE \textcolor{keyword}{class }USpringArmComponent* GetCameraBoom()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} CameraBoom; \}}
+\DoxyCodeLine{220     FORCEINLINE \textcolor{keyword}{class }UCameraComponent* GetFollowCamera()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} FollowCamera; \}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222     \textcolor{comment}{// Equipped weapon}}
+\DoxyCodeLine{223     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Items"{}})}
+\DoxyCodeLine{224     \textcolor{keyword}{class }\mbox{\hyperlink{class_a_weapon}{AWeapon}}* EquippedWeapon;}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226     \textcolor{comment}{// Item that character is overlapping}}
+\DoxyCodeLine{227     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Items"{}})}
+\DoxyCodeLine{228     \textcolor{keyword}{class }\mbox{\hyperlink{class_a_item}{AItem}}* ActiveOverlappingItem;}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230     \textcolor{comment}{// Set equipped weapon}}
+\DoxyCodeLine{231     \textcolor{keywordtype}{void} SetEquippedWeapon(\mbox{\hyperlink{class_a_weapon}{AWeapon}}* WeaponToSet);}
+\DoxyCodeLine{232     FORCEINLINE \mbox{\hyperlink{class_a_weapon}{AWeapon}}* GetEquippedWeapon() \{ \textcolor{keywordflow}{return} EquippedWeapon; \}}
+\DoxyCodeLine{233     FORCEINLINE \textcolor{keywordtype}{void} SetActiveOverlappingItem(\mbox{\hyperlink{class_a_item}{AItem}}* Item) \{ ActiveOverlappingItem = Item; \}}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235     \textcolor{comment}{// Attacking status}}
+\DoxyCodeLine{236     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Anims"{}})}
+\DoxyCodeLine{237     \textcolor{keywordtype}{bool} bAttacking;}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239     \textcolor{comment}{// Attacking function}}
+\DoxyCodeLine{240     \textcolor{keywordtype}{void} Attack();}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{242     \textcolor{comment}{// End attack function}}
+\DoxyCodeLine{243     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{244     \textcolor{keywordtype}{void} AttackEnd();}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246     \textcolor{comment}{// Combat animation montage}}
+\DoxyCodeLine{247     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Anims"{}})}
+\DoxyCodeLine{248     \textcolor{keyword}{class }UAnimMontage* CombatMontage;}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{251     \textcolor{keywordtype}{void} PlaySwingSound();}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{254     \textcolor{keywordtype}{void} DeathEnd();}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256     \textcolor{keywordtype}{void} UpdateCombatTarget();}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{259     TSubclassOf<AEnemy> EnemyFilter;  \textcolor{comment}{// Subtype AEnemy cast EnemyFilter when expecting super with Main (LO5)}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{262     \textcolor{keywordtype}{void} SaveGame();}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{265     \textcolor{keywordtype}{void} LoadGame(\textcolor{keywordtype}{bool} SetPosition);}
+\DoxyCodeLine{266 \};}
+
+\end{DoxyCode}

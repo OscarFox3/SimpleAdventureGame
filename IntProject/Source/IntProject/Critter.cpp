@@ -1,5 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file Critter.cpp
 
+ *  @brief This file has functionallity for Critter object movement.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "Critter.h"
 #include "Components/SkeletalMeshComponent.h"

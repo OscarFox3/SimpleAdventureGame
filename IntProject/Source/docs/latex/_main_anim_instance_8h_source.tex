@@ -1,0 +1,44 @@
+\hypertarget{_main_anim_instance_8h_source}{}\doxysection{Main\+Anim\+Instance.\+h}
+\label{_main_anim_instance_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/MainAnimInstance.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/MainAnimInstance.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Animation/AnimInstance.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}MainAnimInstance.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{13 UCLASS()}
+\DoxyCodeLine{14 class INTPROJECT\_API \mbox{\hyperlink{class_u_main_anim_instance}{UMainAnimInstance}} : public UAnimInstance}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     GENERATED\_BODY()}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} NativeInitializeAnimation() \textcolor{keyword}{override};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{comment}{// Update animation}}
+\DoxyCodeLine{22     UFUNCTION(BlueprintCallable, Category = AnimationProperties)}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} UpdateAnimationProperties();}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{comment}{// Declare for character instance speed}}
+\DoxyCodeLine{26     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)}
+\DoxyCodeLine{27     \textcolor{keywordtype}{float} MovementSpeed;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{comment}{// Truth value for character in air}}
+\DoxyCodeLine{30     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)}
+\DoxyCodeLine{31     \textcolor{keywordtype}{bool} bIsInAir;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{comment}{// Pawn movement}}
+\DoxyCodeLine{34     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)}
+\DoxyCodeLine{35     \textcolor{keyword}{class }APawn* Pawn;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{comment}{// Main character movement}}
+\DoxyCodeLine{38     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Movement)}
+\DoxyCodeLine{39     \textcolor{keyword}{class }\mbox{\hyperlink{class_a_main}{AMain}}* Main;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \};}
+
+\end{DoxyCode}

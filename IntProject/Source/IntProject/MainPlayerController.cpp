@@ -1,5 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file MainPlayerController.cpp
 
+ *  @brief This file has functionallity for Main player controller bindings
+			with UI.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "MainPlayerController.h"
 #include "Blueprint/UserWidget.h"

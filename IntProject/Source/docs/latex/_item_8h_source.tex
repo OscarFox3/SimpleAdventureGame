@@ -1,0 +1,65 @@
+\hypertarget{_item_8h_source}{}\doxysection{Item.\+h}
+\label{_item_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Item.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Item.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GameFramework/Actor.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Item.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 UCLASS()}
+\DoxyCodeLine{11 class INTPROJECT\_API \mbox{\hyperlink{class_a_item}{AItem}} : public AActor}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     GENERATED\_BODY()}
+\DoxyCodeLine{14     }
+\DoxyCodeLine{15 \textcolor{keyword}{public}: }
+\DoxyCodeLine{16     \textcolor{comment}{// Sets default values for this actor's properties}}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_a_item}{AItem}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{comment}{// Base shape collision}}
+\DoxyCodeLine{20     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | Collision"{}})}
+\DoxyCodeLine{21     \textcolor{keyword}{class }USphereComponent* CollisionVolume;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{comment}{// Base Mesh Component}}
+\DoxyCodeLine{24     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | Mesh"{}})}
+\DoxyCodeLine{25     \textcolor{keyword}{class }UStaticMeshComponent* Mesh;}
+\DoxyCodeLine{26     }
+\DoxyCodeLine{27     \textcolor{comment}{// Idle particle state for component}}
+\DoxyCodeLine{28     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | Particles"{}})}
+\DoxyCodeLine{29     \textcolor{keyword}{class }UParticleSystemComponent* IdleParticlesComponent;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{comment}{// Particles for overlap}}
+\DoxyCodeLine{32     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | Particles"{}})}
+\DoxyCodeLine{33     \textcolor{keyword}{class }UParticleSystem* OverlapParticles;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{comment}{// Sound cue when overlap}}
+\DoxyCodeLine{36     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | Sounds"{}})}
+\DoxyCodeLine{37     \textcolor{keyword}{class }USoundCue* OverlapSound;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{comment}{// Rotate item}}
+\DoxyCodeLine{40     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | ItemProperties"{}})}
+\DoxyCodeLine{41     \textcolor{keywordtype}{bool} bRotate;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{comment}{// Rate of item rotate}}
+\DoxyCodeLine{44     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | ItemProperties"{}})}
+\DoxyCodeLine{45     \textcolor{keywordtype}{float} RotationRate;}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{48     \textcolor{comment}{// Called when the game starts or when spawned}}
+\DoxyCodeLine{49     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} BeginPlay() \textcolor{keyword}{override};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{public}: }
+\DoxyCodeLine{52     \textcolor{comment}{// Called every frame}}
+\DoxyCodeLine{53     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Tick(\textcolor{keywordtype}{float} DeltaTime) \textcolor{keyword}{override};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     UFUNCTION()}
+\DoxyCodeLine{56     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, \textcolor{keywordtype}{bool} bFromSweep, \textcolor{keyword}{const} FHitResult \& SweepResult);}
+\DoxyCodeLine{57     UFUNCTION()}
+\DoxyCodeLine{58     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);}
+\DoxyCodeLine{59 \};}
+
+\end{DoxyCode}

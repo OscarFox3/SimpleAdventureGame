@@ -20,11 +20,11 @@ enum class EEnemyMovementStatus :uint8
 };
 
 UCLASS()
-class INTPROJECT_API AEnemy : public ACharacter
+class INTPROJECT_API AEnemy : public ACharacter  // (LO2) AEnemy is a subclass of ACharacter
 {
 	GENERATED_BODY()
 
-public:
+public:  // (LO2a) AEnemy inherited properties from ACharacter public, which does not reduce visibility
 	// Sets default values for this character's properties
 	AEnemy();
 
@@ -78,7 +78,7 @@ public:
 	float AttackMaxTime;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
-	TSubclassOf<UDamageType> DamageTypeClass;
+	TSubclassOf<UDamageType> DamageTypeClass; 
 
 	FTimerHandle DeathTimer;
 

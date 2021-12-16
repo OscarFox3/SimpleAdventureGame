@@ -1,5 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file Main.cpp
 
+ *  @brief This file has functionallity for Main character interaction with 
+			engine world.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "Main.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -464,7 +473,7 @@ void AMain::DeathEnd()
 }
 
 // Set character movement status for sprint and run
-void AMain::SetMovementStatus(EMovementStatus Status)
+void AMain::SetMovementStatus(EMovementStatus Status)  // (LO1a)
 {
 	MovementStatus = Status;
 	if (MovementStatus == EMovementStatus::EMS_Sprinting)
@@ -584,7 +593,7 @@ float AMain::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEve
 
 void AMain::UpdateCombatTarget()
 {
-	TArray<AActor*> OverlappingActors;
+	TArray<AActor*> OverlappingActors;  // Template AActor array (LO7)
 	GetOverlappingActors(OverlappingActors, EnemyFilter);
 
 	if (OverlappingActors.Num() == 0)

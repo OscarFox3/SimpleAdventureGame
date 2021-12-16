@@ -1,0 +1,60 @@
+\hypertarget{_simple_save_game_8h_source}{}\doxysection{Simple\+Save\+Game.\+h}
+\label{_simple_save_game_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/SimpleSaveGame.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/SimpleSaveGame.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GameFramework/SaveGame.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}SimpleSaveGame.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 USTRUCT(BlueprintType)}
+\DoxyCodeLine{10 struct \mbox{\hyperlink{struct_f_character_stats}{FCharacterStats}}}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     GENERATED\_BODY()}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     UPROPERTY(VisibleAnywhere, Category = \textcolor{stringliteral}{"{}SaveGameData"{}})}
+\DoxyCodeLine{15     \textcolor{keywordtype}{float} Health;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     UPROPERTY(VisibleAnywhere, Category = \textcolor{stringliteral}{"{}SaveGameData"{}})}
+\DoxyCodeLine{18     \textcolor{keywordtype}{float} MaxHealth;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     UPROPERTY(VisibleAnywhere, Category = \textcolor{stringliteral}{"{}SaveGameData"{}})}
+\DoxyCodeLine{21     \textcolor{keywordtype}{float} Stamina;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     UPROPERTY(VisibleAnywhere, Category = \textcolor{stringliteral}{"{}SaveGameData"{}})}
+\DoxyCodeLine{24     \textcolor{keywordtype}{float} MaxStamina;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     UPROPERTY(VisibleAnywhere, Category = \textcolor{stringliteral}{"{}SaveGameData"{}})}
+\DoxyCodeLine{27     int32 Coins;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     UPROPERTY(VisibleAnywhere, Category = \textcolor{stringliteral}{"{}SaveGameData"{}})}
+\DoxyCodeLine{30     FVector Location;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     UPROPERTY(VisibleAnywhere, Category = \textcolor{stringliteral}{"{}SaveGameData"{}})}
+\DoxyCodeLine{33     FRotator Rotation;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     UPROPERTY(VisibleAnywhere, Category = \textcolor{stringliteral}{"{}SaveGameData"{}})}
+\DoxyCodeLine{36     FString WeaponName;}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{42 UCLASS()}
+\DoxyCodeLine{43 class INTPROJECT\_API \mbox{\hyperlink{class_u_simple_save_game}{USimpleSaveGame}} : public USaveGame}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45     GENERATED\_BODY()}
+\DoxyCodeLine{46 \textcolor{keyword}{public}:}
+\DoxyCodeLine{47     \mbox{\hyperlink{class_u_simple_save_game}{USimpleSaveGame}}();}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     UPROPERTY(VisibleAnywhere, Category = Basic)}
+\DoxyCodeLine{50     FString PlayerName;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     UPROPERTY(VisibleAnywhere, Category = Basic)}
+\DoxyCodeLine{53     uint32 UserIndex;}
+\DoxyCodeLine{54     }
+\DoxyCodeLine{55     UPROPERTY(VisibleAnywhere, Category = Basic)}
+\DoxyCodeLine{56     \mbox{\hyperlink{struct_f_character_stats}{FCharacterStats}} CharacterStats;}
+\DoxyCodeLine{57 \};}
+
+\end{DoxyCode}

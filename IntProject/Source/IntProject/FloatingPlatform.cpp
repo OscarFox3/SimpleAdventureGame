@@ -1,5 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file FloatingPlatform.cpp
 
+ *  @brief This file has functionallity for Floating Platform translation.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "FloatingPlatform.h"
 #include "Components/StaticMeshComponent.h"

@@ -32,7 +32,7 @@ enum class EStaminaStatus : uint8
 };
 
 UCLASS()
-class INTPROJECT_API AMain : public ACharacter
+class INTPROJECT_API AMain : public ACharacter // (LO1)
 {
 	GENERATED_BODY()
 
@@ -120,7 +120,7 @@ public:
 	void ESCUp();
 
 	// Set movement status and running speed
-	void SetMovementStatus(EMovementStatus Status);
+	void SetMovementStatus(EMovementStatus Status);  // (LO1a)
 
 	// Camera boom positioning the camera behind the player
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -172,16 +172,16 @@ public:
 	virtual void Jump() override;
 
 
-protected:
+protected:  // Encapsulation information hiding to derived classes (LO6)
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
 	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	virtual void Tick(float DeltaTime) override; // Dynamic Dispatch method call at run time (LO3)
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override; // virtual override function (LO5)
 
 	// Called for forwards/backwards input movement
 	void MoveForward(float Value);
@@ -256,7 +256,7 @@ public:
 	void UpdateCombatTarget();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
-	TSubclassOf<AEnemy> EnemyFilter;
+	TSubclassOf<AEnemy> EnemyFilter;  // Subtype AEnemy cast EnemyFilter when expecting super with Main (LO5)
 
 	UFUNCTION(BlueprintCallable)
 	void SaveGame();

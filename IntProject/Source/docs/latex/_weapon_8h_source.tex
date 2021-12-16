@@ -1,0 +1,101 @@
+\hypertarget{_weapon_8h_source}{}\doxysection{Weapon.\+h}
+\label{_weapon_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Weapon.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Weapon.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Item.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Weapon.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{// States for weapon}}
+\DoxyCodeLine{10 UENUM(BlueprintType)}
+\DoxyCodeLine{11 \textcolor{keyword}{enum class} EWeaponState :uint8}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     EWS\_Pickup UMETA(DisplayName = \textcolor{stringliteral}{"{}Pickup"{}}),}
+\DoxyCodeLine{14     EWS\_Equipped UMETA(DisplayName = \textcolor{stringliteral}{"{}Equipped"{}}),}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     EWS\_MAX UMETA(DisplayName = \textcolor{stringliteral}{"{}DefaultMax"{}})}
+\DoxyCodeLine{17 \};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{22 UCLASS()}
+\DoxyCodeLine{23 class INTPROJECT\_API \mbox{\hyperlink{class_a_weapon}{AWeapon}} : public \mbox{\hyperlink{class_a_item}{AItem}}}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     GENERATED\_BODY()}
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \mbox{\hyperlink{class_a_weapon}{AWeapon}}();}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     UPROPERTY(EditDefaultsOnly, Category = \textcolor{stringliteral}{"{}SavedData"{}})}
+\DoxyCodeLine{31     FString Name;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{comment}{// Weapon State}}
+\DoxyCodeLine{34     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item"{}})}
+\DoxyCodeLine{35     EWeaponState WeaponState;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{comment}{// Weapon particles}}
+\DoxyCodeLine{38     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | Particle"{}})}
+\DoxyCodeLine{39     \textcolor{keywordtype}{bool} bWeaponParticles;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{comment}{// Weapon sound equipped}}
+\DoxyCodeLine{42     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | Sound"{}})}
+\DoxyCodeLine{43     \textcolor{keyword}{class }USoundCue* OnEquipSound;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Item | Sound"{}})}
+\DoxyCodeLine{46     USoundCue* SwingSound;}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{comment}{// Skeletal mesh for weapon}}
+\DoxyCodeLine{49     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}SkeletalMesh"{}})}
+\DoxyCodeLine{50     \textcolor{keyword}{class }USkeletalMeshComponent* SkeletalMesh;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Item | Combat"{}})}
+\DoxyCodeLine{53     \textcolor{keyword}{class }UBoxComponent* CombatCollision;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Item | Combat"{}})}
+\DoxyCodeLine{56     \textcolor{keywordtype}{float} Damage;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} BeginPlay() \textcolor{keyword}{override};}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{keyword}{public}:}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{comment}{// Overlap for weapon pickup}}
+\DoxyCodeLine{65     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, \textcolor{keywordtype}{bool} bFromSweep, \textcolor{keyword}{const} FHitResult\& SweepResult) \textcolor{keyword}{override};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \textcolor{comment}{// Overlap end for weapon pickup}}
+\DoxyCodeLine{68     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex) \textcolor{keyword}{override};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{comment}{// Equip weapon function for main character}}
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} Equip(\textcolor{keyword}{class} \mbox{\hyperlink{class_a_main}{AMain}}* Char);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{// Inline to get and set weapon state}}
+\DoxyCodeLine{74     FORCEINLINE \textcolor{keywordtype}{void} SetWeaponState(EWeaponState State) \{ WeaponState = State; \}}
+\DoxyCodeLine{75     FORCEINLINE EWeaponState GetWeaponState() \{ \textcolor{keywordflow}{return} WeaponState; \}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{comment}{// Overlap for Combat}}
+\DoxyCodeLine{78     UFUNCTION()}
+\DoxyCodeLine{79     \textcolor{keywordtype}{void} CombatOnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, \textcolor{keywordtype}{bool} bFromSweep, \textcolor{keyword}{const} FHitResult\& SweepResult);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \textcolor{comment}{// Overlap end Combat}}
+\DoxyCodeLine{82     UFUNCTION()}
+\DoxyCodeLine{83     \textcolor{keywordtype}{void} CombatOnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{86     \textcolor{keywordtype}{void} ActivateCollision();}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88     UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{89     \textcolor{keywordtype}{void} DeactivateCollision();}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{92     TSubclassOf<UDamageType> DamageTypeClass;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \textcolor{stringliteral}{"{}Combat"{}})}
+\DoxyCodeLine{95     AController* WeaponInstigator;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     FORCEINLINE \textcolor{keywordtype}{void} SetInstigator(AController* Inst) \{ WeaponInstigator = Inst; \}}
+\DoxyCodeLine{98 \};}
+
+\end{DoxyCode}

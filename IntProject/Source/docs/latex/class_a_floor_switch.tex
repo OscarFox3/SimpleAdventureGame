@@ -1,0 +1,80 @@
+\hypertarget{class_a_floor_switch}{}\doxysection{AFloor\+Switch Class Reference}
+\label{class_a_floor_switch}\index{AFloorSwitch@{AFloorSwitch}}
+Inheritance diagram for AFloor\+Switch\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_floor_switch}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a2cd506afc6758d7defbdd06184281c4f}\label{class_a_floor_switch_a2cd506afc6758d7defbdd06184281c4f}} 
+void {\bfseries Close\+Door} ()
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a9f4740de66828a39ff41a746575a7176}\label{class_a_floor_switch_a9f4740de66828a39ff41a746575a7176}} 
+virtual void {\bfseries Tick} (float Delta\+Time) override
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a51a9fc3cba0db71d390ea1544443e18f}\label{class_a_floor_switch_a51a9fc3cba0db71d390ea1544443e18f}} 
+void {\bfseries On\+Overlap\+Begin} (UPrimitive\+Component $\ast$Overlapped\+Component, AActor $\ast$Other\+Actor, UPrimitive\+Component $\ast$Other\+Comp, int32 Other\+Body\+Index, bool b\+From\+Sweep, const FHit\+Result \&Sweep\+Result)
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a301d69a405c96d63b5b7a5b6f4f3cad6}\label{class_a_floor_switch_a301d69a405c96d63b5b7a5b6f4f3cad6}} 
+void {\bfseries On\+Overlap\+End} (UPrimitive\+Component $\ast$Overlapped\+Component, AActor $\ast$Other\+Actor, UPrimitive\+Component $\ast$Other\+Comp, int32 Other\+Body\+Index)
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a92c8880b848a4bcfe03f8de7d23bd976}\label{class_a_floor_switch_a92c8880b848a4bcfe03f8de7d23bd976}} 
+void {\bfseries Raise\+Door} ()
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a56c83270e3532b5dad80ad1e41f4f17c}\label{class_a_floor_switch_a56c83270e3532b5dad80ad1e41f4f17c}} 
+void {\bfseries Lower\+Door} ()
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a7db090515ff9f25c272818b5456aef48}\label{class_a_floor_switch_a7db090515ff9f25c272818b5456aef48}} 
+void {\bfseries Raise\+Floor\+Switch} ()
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a6e787d813256491db6e491535f6ed0ab}\label{class_a_floor_switch_a6e787d813256491db6e491535f6ed0ab}} 
+void {\bfseries Lower\+Floor\+Switch} ()
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a9ae82b5e6f88206e679964711fd0a2ef}\label{class_a_floor_switch_a9ae82b5e6f88206e679964711fd0a2ef}} 
+void {\bfseries Update\+Door\+Location} (float Z)
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_ad395d89ba1ec98474f3ebe40dd22b798}\label{class_a_floor_switch_ad395d89ba1ec98474f3ebe40dd22b798}} 
+void {\bfseries Update\+Floor\+Switch\+Location} (float Z)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a3f96afa0930462d2cdcd18b880407685}\label{class_a_floor_switch_a3f96afa0930462d2cdcd18b880407685}} 
+class UBox\+Component $\ast$ {\bfseries Trigger\+Box}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_aa2d1c16e414b33273691d333b1436ff3}\label{class_a_floor_switch_aa2d1c16e414b33273691d333b1436ff3}} 
+class UStatic\+Mesh\+Component $\ast$ {\bfseries Floor\+Switch}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_af7758e6f599474a2e239dc579c44c499}\label{class_a_floor_switch_af7758e6f599474a2e239dc579c44c499}} 
+UStatic\+Mesh\+Component $\ast$ {\bfseries Door}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_aba38514d859c875fad1a51484e88e245}\label{class_a_floor_switch_aba38514d859c875fad1a51484e88e245}} 
+FVector {\bfseries Initial\+Door\+Location}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a2ef3949382eb4313e3eac7e14b1068eb}\label{class_a_floor_switch_a2ef3949382eb4313e3eac7e14b1068eb}} 
+FVector {\bfseries Initial\+Switch\+Location}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_aa6977fb624e2e0ac629d54fe5ccc151b}\label{class_a_floor_switch_aa6977fb624e2e0ac629d54fe5ccc151b}} 
+FTimer\+Handle {\bfseries Switch\+Handle}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_ab0b0e7f91d128ebc9a2d21e6c0c4063f}\label{class_a_floor_switch_ab0b0e7f91d128ebc9a2d21e6c0c4063f}} 
+float {\bfseries Switch\+Time}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_ab5312e8d33e35b4badaf77922907e90e}\label{class_a_floor_switch_ab5312e8d33e35b4badaf77922907e90e}} 
+bool {\bfseries b\+Character\+On\+Switch}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_floor_switch_a0114fe350c11bfdb929883be8b30fd51}\label{class_a_floor_switch_a0114fe350c11bfdb929883be8b30fd51}} 
+virtual void {\bfseries Begin\+Play} () override
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/oscar/\+Desktop/\+Simple\+Adventure\+Game\+Local/\+Int\+Project/\+Source/\+Int\+Project/Floor\+Switch.\+h\item 
+C\+:/\+Users/oscar/\+Desktop/\+Simple\+Adventure\+Game\+Local/\+Int\+Project/\+Source/\+Int\+Project/\mbox{\hyperlink{_floor_switch_8cpp}{Floor\+Switch.\+cpp}}\end{DoxyCompactItemize}

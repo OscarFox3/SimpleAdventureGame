@@ -1,5 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file ItemStorage.cpp
 
+ *  @brief This file has functionallity for blueprint item storage.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "ItemStorage.h"
 

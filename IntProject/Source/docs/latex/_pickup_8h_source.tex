@@ -1,0 +1,34 @@
+\hypertarget{_pickup_8h_source}{}\doxysection{Pickup.\+h}
+\label{_pickup_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Pickup.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/Pickup.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Item.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Pickup.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{13 UCLASS()}
+\DoxyCodeLine{14 class INTPROJECT\_API \mbox{\hyperlink{class_a_pickup}{APickup}} : public \mbox{\hyperlink{class_a_item}{AItem}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     GENERATED\_BODY()}
+\DoxyCodeLine{17     }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \mbox{\hyperlink{class_a_pickup}{APickup}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{comment}{// Overlap with coin function}}
+\DoxyCodeLine{24     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, \textcolor{keywordtype}{bool} bFromSweep, \textcolor{keyword}{const} FHitResult\& SweepResult) \textcolor{keyword}{override};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{comment}{// Overlap with coin end function}}
+\DoxyCodeLine{27     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex) \textcolor{keyword}{override};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     UFUNCTION(BlueprintImplementableEvent, Category = \textcolor{stringliteral}{"{}Pickup"{}})}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} OnPickupBP(\textcolor{keyword}{class} \mbox{\hyperlink{class_a_main}{AMain}}* Target);}
+\DoxyCodeLine{31 \};}
+
+\end{DoxyCode}

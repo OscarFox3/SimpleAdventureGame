@@ -1,5 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file FloorSwitch.cpp
 
+ *  @brief This file has functionallity for Floor Switch objects with dynamic
+			translation response to collision.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "FloorSwitch.h"
 #include "Components/BoxComponent.h"

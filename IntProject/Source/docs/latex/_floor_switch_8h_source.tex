@@ -1,0 +1,96 @@
+\hypertarget{_floor_switch_8h_source}{}\doxysection{Floor\+Switch.\+h}
+\label{_floor_switch_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/FloorSwitch.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/FloorSwitch.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GameFramework/Actor.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}FloorSwitch.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 UCLASS()}
+\DoxyCodeLine{10 class INTPROJECT\_API \mbox{\hyperlink{class_a_floor_switch}{AFloorSwitch}} : public AActor}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     GENERATED\_BODY()}
+\DoxyCodeLine{13     }
+\DoxyCodeLine{14 \textcolor{keyword}{public}: }
+\DoxyCodeLine{15     \textcolor{comment}{// Sets default values for this actor's properties}}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_a_floor_switch}{AFloorSwitch}}();}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{comment}{// Overlap volume for functionality to be triggered}}
+\DoxyCodeLine{19     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{20     \textcolor{keyword}{class }UBoxComponent* TriggerBox;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{comment}{// Switch for character to step on}}
+\DoxyCodeLine{23     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{24     \textcolor{keyword}{class }UStaticMeshComponent* FloorSwitch;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{comment}{// Door to move when floor switch is stepped on}}
+\DoxyCodeLine{27     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{28     UStaticMeshComponent* Door;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{comment}{// Initial location for door}}
+\DoxyCodeLine{31     UPROPERTY(BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{32     FVector InitialDoorLocation;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{comment}{// Initial location for floor switch}}
+\DoxyCodeLine{35     UPROPERTY(BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{36     FVector InitialSwitchLocation;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{comment}{// Timer handle}}
+\DoxyCodeLine{39     FTimerHandle SwitchHandle;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{comment}{// Time for switch}}
+\DoxyCodeLine{42     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{43     \textcolor{keywordtype}{float} SwitchTime;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{comment}{// Character on switch status}}
+\DoxyCodeLine{46     \textcolor{keywordtype}{bool} bCharacterOnSwitch;}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{comment}{// Function to close door}}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} CloseDoor();}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{52     \textcolor{comment}{// Called when the game starts or when spawned}}
+\DoxyCodeLine{53     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} BeginPlay() \textcolor{keyword}{override};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{keyword}{public}: }
+\DoxyCodeLine{56     \textcolor{comment}{// Called every frame}}
+\DoxyCodeLine{57     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Tick(\textcolor{keywordtype}{float} DeltaTime) \textcolor{keyword}{override};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{comment}{// When character begins overlap }}
+\DoxyCodeLine{60     UFUNCTION()}
+\DoxyCodeLine{61     \textcolor{keywordtype}{void} OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, \textcolor{keywordtype}{bool} bFromSweep, \textcolor{keyword}{const} FHitResult\& SweepResult);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     \textcolor{comment}{// When character ends overlap}}
+\DoxyCodeLine{64     UFUNCTION()}
+\DoxyCodeLine{65     \textcolor{keywordtype}{void} OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \textcolor{comment}{// Raise door}}
+\DoxyCodeLine{68     UFUNCTION(BlueprintImplementableEvent, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} RaiseDoor();}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{comment}{// Lower door}}
+\DoxyCodeLine{72     UFUNCTION(BlueprintImplementableEvent, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{73     \textcolor{keywordtype}{void} LowerDoor();}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{comment}{// Raise floor switch}}
+\DoxyCodeLine{76     UFUNCTION(BlueprintImplementableEvent, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{77     \textcolor{keywordtype}{void} RaiseFloorSwitch();}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     \textcolor{comment}{// Lower floor switch}}
+\DoxyCodeLine{80     UFUNCTION(BlueprintImplementableEvent, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} LowerFloorSwitch();}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{comment}{// Update door location}}
+\DoxyCodeLine{84     UFUNCTION(BlueprintCallable, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} UpdateDoorLocation(\textcolor{keywordtype}{float} Z);}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{comment}{// Update floor switch location}}
+\DoxyCodeLine{88     UFUNCTION(BlueprintCallable, Category = \textcolor{stringliteral}{"{}Floor Switch"{}})}
+\DoxyCodeLine{89     \textcolor{keywordtype}{void} UpdateFloorSwitchLocation(\textcolor{keywordtype}{float} Z);}
+\DoxyCodeLine{90 \};}
+
+\end{DoxyCode}

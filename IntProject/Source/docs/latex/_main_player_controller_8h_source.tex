@@ -1,0 +1,62 @@
+\hypertarget{_main_player_controller_8h_source}{}\doxysection{Main\+Player\+Controller.\+h}
+\label{_main_player_controller_8h_source}\index{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/MainPlayerController.h@{C:/Users/oscar/Desktop/SimpleAdventureGameLocal/IntProject/Source/IntProject/MainPlayerController.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Fill out your copyright notice in the Description page of Project Settings.}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}GameFramework/PlayerController.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}MainPlayerController.generated.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{13 UCLASS()}
+\DoxyCodeLine{14 class INTPROJECT\_API \mbox{\hyperlink{class_a_main_player_controller}{AMainPlayerController}} : public APlayerController}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     GENERATED\_BODY()}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{comment}{// Reference to the UMG asset in the editor}}
+\DoxyCodeLine{20     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Widgets"{}})}
+\DoxyCodeLine{21     TSubclassOf<class UUserWidget> HUDOverlayAsset;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{comment}{//Variable to hold the widget after creating it}}
+\DoxyCodeLine{24     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Widgets"{}})}
+\DoxyCodeLine{25     UUserWidget* HUDOverlay;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Widgets"{}})}
+\DoxyCodeLine{28     TSubclassOf<UUserWidget> WEnemyHealthBar;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Widgets"{}})}
+\DoxyCodeLine{31     UUserWidget* EnemyHealthBar;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Widgets"{}})}
+\DoxyCodeLine{34     TSubclassOf<UUserWidget> WPauseMenu;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = \textcolor{stringliteral}{"{}Widgets"{}})}
+\DoxyCodeLine{37     UUserWidget* PauseMenu;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{keywordtype}{bool} bPauseMenuVisible;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = \textcolor{stringliteral}{"{}HUD"{}})}
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} DisplayPauseMenu();}
+\DoxyCodeLine{43     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = \textcolor{stringliteral}{"{}HUD"{}})}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} RemovePauseMenu();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} TogglePauseMenu();}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{bool} bEnemyHealthBarVisible;}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{void} DisplayEnemyHealthBar();}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} RemoveEnemyHealthBar();}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     FVector EnemyLocation;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{56     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} BeginPlay() \textcolor{keyword}{override};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Tick(\textcolor{keywordtype}{float} DeltaTime) \textcolor{keyword}{override};}
+\DoxyCodeLine{59 \};}
+
+\end{DoxyCode}

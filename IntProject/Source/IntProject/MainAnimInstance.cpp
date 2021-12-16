@@ -1,5 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file MainAnimInstance.cpp
 
+ *  @brief This file has functionallity for Main character animations.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "MainAnimInstance.h"
 #include "GameFramework/CharacterMovementComponent.h"

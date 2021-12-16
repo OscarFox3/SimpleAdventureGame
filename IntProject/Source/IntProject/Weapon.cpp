@@ -1,4 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+/** @file Weapon.cpp
+
+ *  @brief This file has functionallity for Weapon item on overlap.
+
+ *  @author Oscar Fox
+
+ *  @bug No known bugs.
+
+ */
 
 #include "Weapon.h"
 #include "Components/SkeletalMeshComponent.h"
