@@ -25,8 +25,6 @@ https://docs.unrealengine.com/4.27/en-US/API/
 Unreal Engine Coding Standard: <br />
 https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DevelopmentSetup/CodingStandard/
 
-![Sample Image](ErrorList.png)
-
 ## Software
 
 Microsoft Visual Studio IDE: <br />
